@@ -1,0 +1,1988 @@
+/* Подключаем шрифты */
+@font-face {
+    font-family: 'WildRune';
+    src: url('шрифты/behance-68d411c45d977.otf');
+}
+@font-face {
+    font-family: 'UraBumBum';
+    src: url('шрифты/HU Cookie Cyrillic W05 Light.otf');
+}
+
+#backToTop {
+    
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    background-image: url('картинки/вверх.png');
+    
+    /* Добавляем фиксированный размер кнопки */
+    width: 90px; 
+    height: 90px;
+    
+    /* Масштабируем и центрируем изображение */
+    background-size: contain; /* Картинка масштабируется, чтобы полностью поместиться внутри, не искажаясь */
+    background-repeat: no-repeat; /* Не повторяем изображение */
+    background-position: center; /* Центрируем изображение внутри кнопки */
+    
+    cursor: pointer;
+    
+    /* Добавляем стили, чтобы кнопка выглядела аккуратно (убираем стандартную рамку) */
+    border: none;
+    background-color: #ffffff00; /* Цвет фона, который мы использовали ранее */
+    border-radius: 50%; /* Сделаем её круглой */
+  
+    
+    /* max-width: 90px; - убираем, так как теперь размер фиксирован */
+    /* padding: 15px; - убираем, так как теперь размер задан явно */
+    
+    transform: translate(opacity : 0);
+}
+
+#backToTop.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+
+/* --- АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ --- */
+
+/* Начальное состояние: объект чуть ниже и прозрачный */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out; /* Плавность появления (0.8 сек) */
+    will-change: transform, opacity;
+}
+
+/* Состояние при активации (когда доскроллили) */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Небольшая задержка для элементов внутри одного блока, чтобы появлялись не все сразу */
+.photos-row.reveal.active .photo-item:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+/* Исправляем работу маркера в анимированных заголовках */
+.marker-svg {
+    transition: width 1s ease-in-out 0.5s; /* Рисуем линию чуть позже появления текста */
+}
+
+/* ... (шрифты и другие стили без изменений) ... */
+
+
+/* Контейнер-обертка */
+.interactive-map-container {
+    position: relative;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Картинка подстраивается под ширину */
+.map-illustration {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+/* Общие стили для невидимых кнопок-зон */
+.map-hotspot {
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+    /* ПОДСКАЗКА: Раскомментируй строку ниже (убери //), чтобы увидеть красные зоны во время настройки! */
+    /* background: rgba(255, 0, 0, 0.3); */
+}
+
+/* Размеры и координаты кликабельных зон (настроены под объекты на фото) */
+.hotspot-vaina {
+    bottom: 8%;
+    left: 10%;
+    width: 16%;
+    height: 35%;
+}
+
+.hotspot-izba {
+    bottom: 22%;
+    left: 56%;
+    width: 15%;
+    height: 25%;
+}
+
+.hotspot-sampo {
+    top: 15%;
+    right: 5%;
+    width: 18%;
+    height: 35%;
+}
+
+/* Общие стили для бабблов */
+.speech-bubble {
+    position: absolute;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none; /* Чтобы скрытый баббл не мешал кликать по картинке */
+    transform: scale(0.9) translateY(10px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* Класс, который будет добавлять JavaScript при клике */
+.speech-bubble.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1) translateY(0);
+}
+
+.speech-bubble img {
+    width: 100%;
+    height: auto;
+}
+
+/* ТОЧНОЕ РАСПОЛОЖЕНИЕ БАББЛОВ НА КАРТИНКЕ */
+.bubble-vaina-1 {
+    top: 10%;
+    left: 13%;
+    width: 20%; /* Ширина баббла в процентах от всей картинки */
+}
+
+.bubble-vaina-2 {
+    top: 30%;
+    left: 23%;
+    width: 19%;
+}
+
+.bubble-izba {
+    top: 29%;
+    left: 48%;
+    width: 20%;
+}
+
+.bubble-sampo {
+    top: -5%;
+    right: 12%;
+    width: 18%;
+}
+
+
+.hero {
+    position: relative;
+    height: 100vh; /* Или твоя высота */
+    width: 100%;
+    overflow: hidden; /* Скрываем вылеты слоев */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* Принудительно задаем z-index, чтобы слои не перекрыли текст */
+.layer-bg { z-index: 1; }
+.layer-trees { z-index: 2; }
+.hero-content { 
+    position: relative;
+    z-index: 10; /* Вытаскиваем текст и логотип ВХУТЕИН поверх всех слоев */
+    pointer-events: none; /* КРИТИЧЕСКИ ВАЖНО для параллакса! */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    opacity: 0;
+    transform: translateY(0px); 
+    transition: opacity 2s ease-out, transform 1s ease-out; 
+}
+
+
+
+
+
+.layer {
+    /* ... твои свойства ... */
+    opacity: 0;
+    /* Оставляем анимацию ТОЛЬКО для прозрачности */
+    transition: opacity 1s ease-out; 
+    will-change: transform;
+}
+
+/* Убираем отсюда любые transform: translateY или подобные */
+.hero.loaded .layer {
+    opacity: 1;
+}
+
+/* Задержки теперь касаются только появления (opacity) */
+.hero.loaded .layer-bg { transition-delay: 0.1s; }
+.hero.loaded .layer-trees { transition-delay: 0.3s; }
+.hero.loaded .layer-whaaa { transition-delay: 0.4s; }
+.hero.loaded .layer-deer { transition-delay: 0.5s; }
+/* Контент баннера (заголовок и лого) */
+.hero.loaded .hero-content { 
+    opacity: 1; 
+    transform: translateY(-150px); 
+    transition-property: opacity, transform;
+    transition-duration: 1s, 1s;
+    transition-delay: 1s, 1s; /* Тут можно оставить задержку на всё */
+}
+
+
+/* Убираем z-index отсюда и переносим в контейнер контента */
+.hero-title {
+    font-family: 'WildRune';
+    
+   
+    color: #1a1a1a;
+}
+
+/* --- СТИЛИ ДЛЯ КОНТЕНТА БАННЕРА (Заголовок и Логотип) --- */
+
+/* Стили для проявляющегося логотипа */
+.hero-logo {
+    max-height: 8rem; /* Высота логотипа относительно текста (6rem text -> ~4rem logo) */
+    width: auto;
+    margin-top: 0.4rem; /* Отступ между текстом и логотипом */
+}
+
+/* НОВАЯ АНИМАЦИЯ НА ЗАГРУЗКЕ для контента (заголовка и логотипа) */
+/* Мы делаем его самым последним проявляющимся элементом, после оленя */
+.hero.loaded .hero-content { 
+    opacity: 1; 
+    transform: translateY(-150px); 
+    transition-delay: 2.5s; /* Задержка после проявления оленя (1.5s + 1s = 2.5s) */
+}
+
+/* ... (остальные стили, в т.ч. reveal, без изменений) ... */
+
+
+
+
+
+/* Общие стили для обеих картинок */
+.choblya1, .choblya2 {
+    position: absolute;   /* Фиксируем их на экране */
+    top: 1600px;          /* Положение от верхнего края */
+    z-index: -1;       /* Уводим под основной контент */
+    pointer-events: none; /* Пропускают клики сквозь себя */
+    width: 250;      /* Настрой ширину под себя */
+    height: 5500px;
+}
+
+.choblya1 {
+    left: -50px;       /* Немного торчит слева */
+}
+
+.choblya2 {
+    right: -50px;      /* Немного торчит справа */
+}
+
+
+
+
+.meaning-section {
+    padding: 20px 40px 60px;
+    text-align: center;
+    
+}
+
+/* Стили заголовка с маркером */
+.meaning-title {
+    font-family: 'WildRune', sans-serif;
+    font-size: 2rem;
+    margin: 40px 0;
+    letter-spacing: 1px;
+    justify-self: center;
+}
+
+.meaning-title .marker-wrap {
+    position: relative;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.meaning-title .marker-svg {
+    position: absolute;
+    top: 55%;
+    left: 0;
+    width: 100%;
+    height: 1.2em;
+    transform: translateY(-50%);
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.meaning-title .highlight {
+    position: relative;
+    z-index: 2;
+    
+}
+
+/* Иллюстрация */
+.illustration-box {
+    align-self: center;
+  
+    width: 1920px;
+}
+
+
+.main {
+    z-index: 9999;
+    position: relative;
+}
+
+.ogo-wrap {
+    position: relative;
+    /* Растягиваем на всю ширину окна браузера */
+    width: 100vw; 
+    
+    /* Центрируем элемент относительно экрана, а не контейнера */
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    display: block; 
+    cursor: pointer;
+    line-height: 0; /* Убираем микро-отступ снизу у картинок */
+}
+
+.ogo-wrap img {
+    width: 100%;   /* Теперь картинка займет все 100vw */
+    height: auto;
+    display: block;
+    transition: opacity 0.5s ease;
+}
+
+/* Оставляем логику наслоения и ховера */
+.ogo-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.ogo-wrap:hover .ogo-front {
+    opacity: 0;
+}
+
+.ogo-wrap:hover .ogo-back {
+    opacity: 1;
+}
+
+
+/* Текстовый блок */
+.meaning-description {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: left; /* Текст выровнен по левому краю, как на картинке */
+    font-family: 'UraBumBum', serif;
+    font-size: 40px;
+    line-height: 1.6;
+}
+
+.meaning-description p {
+    margin-bottom: 20px;
+}
+
+.meaning-description strong {
+    font-weight: 600;
+}
+
+/* Разделитель (общий класс) */
+.divider-img {
+    width: 400px;
+    height: auto;
+    
+}
+.main-footer {
+    width: 100%;
+    margin-top: 50px;
+}
+
+/* Стили навигации (повторяем для закрепления) */
+.footer-navigation {
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-family: 'UraBumBum', serif;
+    font-size: 40px;
+    /* Убираем лишний дефис и меняем ms на s (или пишем 300ms) */
+    transition: color 0.3s ease; 
+}
+
+.footer-links a:hover {
+    color: #4a90e2;
+}
+
+/* Нижний блок с волной */
+.footer-bottom-wave {
+    background-image: url('картинки/футер.png'); /* Твой файл с голубой волной */
+    background-size: 70%;
+    
+    min-height: 250px; /* Высота подбирается под картинку */
+    display: flex;
+    align-items: flex-end; /* Прижимаем контент к низу */
+    padding-bottom: 40px;
+    padding-top: -50px;
+    position: relative;
+}
+
+.footer-content-wrap {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* Соцсети слева, логотип справа */
+    align-items: center;
+    padding: 0 40px;
+}
+
+/* Соцсети */
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    text-decoration: none;
+    color: #fff; /* Белый текст на голубом фоне */
+    font-family: 'UraBumBum', sans-serif;
+    font-size: 1.5rem;
+    
+    padding: 5px 15px;
+    border-radius: 20px;
+    transition: background 0.3s;
+}
+
+.social-icon:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Логотип VHUTEIN */
+.vhutein-text {
+    font-family: 'UraBumBum', sans-serif; /* Или шрифт как на лого */
+    font-size: 2rem;
+    color: #fff;
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+.university-logo a {
+    text-decoration: none;
+}
+
+.university-logo a:hover .vhutein-text {
+    opacity: 0.8;
+}
+
+
+/* Начальное состояние: смещен вниз и прозрачен */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+    will-change: transform, opacity;
+}
+
+/* Состояние при попадании в область видимости */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Общие настройки текста */
+.history-text, .editions-block p {
+    text-align: center;
+    max-width: 1400px;
+    margin: 40px auto;
+    font-size: 40px;
+    line-height: 1.5;
+    font-family: 'UraBumBum', serif; /* Твой основной шрифт */
+}
+
+/* Ряд с фотографиями */
+.photos-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.photo-item {
+    
+    padding: 0;
+    line-height: 0;
+    background: #fff;
+    font-size: 27px;
+}
+
+.photo-item img {
+    
+    height: auto;display: block;
+    transition: transform 0.4s ease, filter 0.4s ease; /* Плавность */
+}
+
+.photo-item:hover img {
+    transform: scale(1.05); /* Легкое увеличение */
+   
+}
+
+/* Блок со сноской */
+.editions-block {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.asterisk-note {
+    text-align: right;
+    font-size: 27px;
+    color: #555;
+    margin-top: -20px;
+    padding-right: 10%;
+    font-style: italic;
+}
+
+.asterisk-note .symbol {
+    color: #34adb1; /* Синий цвет для символа Ж */
+    font-family: 'UraBumBum', sans-serif;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* Декоративный разделитель */
+.decorative-divider {
+    display: flex;
+    justify-content: center;
+    margin: 150px 0;
+}
+
+.decorative-divider svg {
+    width: 250px;
+    height: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.map-section-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    font-family: 'UraBumBum', sans-serif;
+}
+
+.interactive-map-block {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* Стек слоев карты */
+.map-display {
+    position: relative;
+    flex: 1;
+    
+    line-height: 0;
+}
+
+.base-map {
+    width: 100%;
+    height: auto;
+}
+
+.route-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    pointer-events: none; /* Чтобы клики не мешали кнопкам */
+}
+
+.route-layer img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Активный маршрут плавно проявляется */
+.route-layer.active {
+    opacity: 1;
+}
+
+/* Легенда */
+.map-legend {
+    width: 320px;
+    background-image src: 'картинки/легенда рамка.png';
+    padding: 20px;
+}
+
+.date-item, .date-item1, .date-item2, .date-item3 {
+    cursor: pointer;
+    padding: 10px;
+    transition: 0.5s;
+    font-size: 27px;
+}
+
+.date-item h3, .date-item1 h3, .date-item2 h3, .date-item3 h3 {
+    margin: 0;
+    font-family: 'UraBumBum', serif;
+    font-size: 32px;
+    
+}
+
+.date-item h3 {
+    color: #B8D3F7;
+}
+
+
+.date-item1 h3 {
+    color: #A8CDCF;
+}
+
+.date-item2 h3 {
+    color: #2B4D50;
+}
+
+.date-item3 h3 {
+    color: #90B3CE;
+}
+
+
+.date-item.active, .date-item1.active, .date-item2.active, .date-item3.active {
+    background: rgba(105, 225, 231, 0.2);
+    font-size: 40px;
+}
+
+.date-item:hover, .date-item1:hover, .date-item2:hover, .date-item3:hover  {
+    background: #f0f8f9;
+}
+
+
+.key {
+    height: 24px;
+    position: relative;
+    padding: 20px;
+    
+}
+.dot {
+    width: 200px;
+    height: 40px;
+    padding-left: 5px;
+    position: relative;
+}
+
+
+.legend-footer {
+    font-size: 32px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:root {
+    --bg-color: #A5D7FA; /* Твой голубой цвет */
+}
+
+
+.content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    position: relative;
+    /* Убираем пока маску, чтобы увидеть контент */
+    mask-image: none !important; 
+    -webkit-mask-image: none !important;
+    
+    /* Добавляем это, чтобы контейнер подстраивался под высоту контента */
+    display: block;
+    overflow: visible; 
+    min-height: 500px; 
+    z-index: 10;
+}
+
+.report-section {
+    position: relative;
+    padding: 40px;
+    display: block; /* Убеждаемся, что секция не схлопнулась */
+}
+
+/* --- Заголовок --- */
+.main-title {
+    font-family: 'WildRune', serif;
+    font-size: 3rem;
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.title-divider {
+    border: none;
+    border-top: 2px dashed #1a1a1a;
+    width: 60%;
+    margin: 0 auto 40px;
+}
+
+/* --- Карта и Легенда --- */
+.map-legend-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.map-box {
+    
+    padding: 5px;
+    max-width: 50%;
+}
+
+.map-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.legend-box {
+    
+    padding: 20px;
+    width: 300px; /* Фиксированная ширина как на макете */
+}
+
+.legend-item {
+    margin-bottom: 15px;
+}
+
+.legend-date {
+    font-family: 'UraBumBum', serif;
+    color: #34a7c4; /* Синий цвет для дат */
+    font-size: 40px;
+    margin: 0 0 5px 0;
+}
+
+.legend-places {
+    font-family: 'SimpleDocText', serif;
+    font-size: 32px;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.legend-divider {
+    border: none;
+    border-top: 1px dashed #1a1a1a;
+    margin: 10px 0;
+}
+
+/* --- Ключи легенды --- */
+.legend-keys {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.key-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.key-icon-line {
+    display: inline-block;
+    width: 20px;
+    height: 10px;
+    background-color: #4a90e2; /* Синий цвет пути */
+    /* Имитация неровного края как у маршрута */
+    clip-path: polygon(10% 20%, 90% 10%, 95% 40%, 85% 60%, 10% 80%, 5% 50%);
+}
+
+.key-icon-pin {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: #4a90e2; /* Синий цвет точки */
+    border-radius: 50% 50% 50% 0; /* Форма булавки */
+    transform: rotate(-45deg);
+    position: relative;
+    top: -2px;
+}
+
+.key-text {
+    font-family: 'UraBumBum', serif;
+    font-size: 27px;
+}
+
+/* --- Промежуточный текст --- */
+.intro-text {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    font-size: 27px;
+    line-height: 1.5;
+}
+
+/* --- Изображения --- */
+.images-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.bio-img, .stone-img {
+    border: 1px solid #1a1a1a;
+    max-height: 300px;
+    width: auto;
+}
+
+/* --- Финальный текст --- */
+.edition-text {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 20px;
+    font-size: 27px;
+    line-height: 1.5;
+}
+
+/* --- Сноска --- */
+.footnote-container {
+    text-align: right;
+    width: 70%;
+    margin: 0 auto 0 calc(100% - 70% - 40px);
+}
+
+.footnote {
+    font-family: 'SimpleDocText', serif;
+    font-size: 27px;
+    margin: 0;
+    font-style: italic;
+}
+
+.footnote span {
+    color: #4a90e2; /* Цвет звездочки */
+    font-family: 'UraBumBum', serif;
+    position: relative;
+    top: -3px;
+    margin-right: 3px;
+}
+
+body {
+    margin: 0;
+    background-color: #ffffff;
+    font-family: 'UraBumBum', sans-serif;
+    overflow-x: hidden;
+}
+
+.bio-block {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 40px;
+    text-align: center;
+    background: #fff; /* Или текстура бумаги */
+    position: relative;
+    font-family: 'UraBumBum', sans-serif;
+    font-size: 40px;
+}
+
+.bio-title {
+    font-family: 'WildRune', serif;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.bio-main {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    text-align: left;
+}
+
+.bio-image img {
+    width: 450px;
+    height: auto;
+    position: relative;
+display: block;
+    transition: transform 0.4s ease, filter 0.4s ease; /* Плавность */
+}
+
+.bio-image:hover img {
+    transform: scale(1.05); /* Легкое увеличение */
+   
+}
+
+
+
+
+/* Контейнер для фразы с маркером */
+.marker-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+/* Сам SVG кладем ПОД текст */
+.marker-svg {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%; /* Растягивается по ширине текста */
+    height: 1.2em; /* Высота подбирается под шрифт */
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.highlight {
+    position: relative;
+    z-index: 2; /* Текст выше маркера */
+    
+}
+
+.bio-footer {
+    margin-top: 20px;
+    text-align: left;
+    line-height: 1.6;
+}
+
+
+
+/* --- БАННЕР СЛОИ --- */
+.hero {
+    height: 100vh;
+    position: relative;
+    background-color: var(--bg-color);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.layer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: bottom center;
+    opacity: 0; /* Изначально скрыты */
+    transition: opacity 2s ease-out, transform 2s ease-out;
+}
+
+.layer-bg { background-image: url('картинки/фон3.png'); z-index: 1; }
+.layer-trees { background-image: url('картинки/фон4.png'); z-index: 2; }
+.layer-whaaa { background-image: url('картинки/фон2.png'); z-index: 2;}
+.layer-deer { 
+    background-image: url('картинки/фон1.png'); 
+    z-index: 4; 
+    transform: translateY(30px);
+}
+
+/* Класс для запуска анимации баннера при загрузке */
+.hero.loaded .layer { opacity: 1; transform: translateY(0); }
+.hero.loaded .layer-bg { transition-delay: 0.2s; }
+.hero.loaded .layer-trees { transition-delay: 0.8s; }
+.hero.loaded .layer-deer { transition-delay: 1.5s; }
+
+.hero-title {
+    margin-top: -90px;
+    z-index: 10;
+    color: #1a1a1a;
+    margin-bottom: 0;
+}
+
+/* --- СКРОЛЛ АНИМАЦИЯ (Вылет сверху) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(-50px); /* Начальная позиция выше */
+    transition: all 1s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- МЕНЮ --- */
+.menu-overlay {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-image: url('картинки/фон меню.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 100;
+    
+    /* Центрирование контента */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+
+    /* МАГИЯ ПЛАВНОСТИ */
+    opacity: 0;            /* Полностью прозрачно */
+    visibility: hidden;    /* Полностью скрыто от мышки */
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.menu-overlay.open {
+    opacity: 1;            /* Становится видимым */
+    visibility: visible;   /* Становится активным для кликов */
+}
+
+.menu-content {
+    transform: translateY(20px); /* Изначально чуть ниже */
+    transition: transform 0.6s ease;
+}
+
+
+
+.menu-title {
+    font-family: 'WildRune';
+    font-size: 3rem ;
+    position: relative;
+    padding-left: 200px;
+}
+
+.menu-content nav {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.menu-content a {
+    font-size: 40px;
+    text-decoration: none;
+    
+    color: #333;
+    margin: 15px 0;
+    transition: 0.3s;
+}
+
+.menu-content a:hover { color: #fff; }
+
+.burger {
+    position: fixed;
+    top: 20px; right: 20px;
+    z-index: 110;
+    cursor: pointer;
+    color: #fff;
+}
+.burger span {
+    display: block;
+    width: 30px; height: 3px;
+    background: #fff; margin: 6px;
+}
+
+/* --- КАРТА --- */
+.map-box { position: relative; }
+.map-svg {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+.route {
+    fill: none; stroke: #333; stroke-width: 4;
+    stroke-dasharray: 10; opacity: 0; transition: 0.5s;
+}
+.route.active { opacity: 1; }
+
+
+
+
+
+/* для хахаха2 */
+
+.choblya5, .choblya6 {
+    position: absolute;   /* Фиксируем их на экране */
+    top: 250px;          /* Положение от верхнего края */
+    z-index: -1;       /* Уводим под основной контент */
+    pointer-events: none; /* Пропускают клики сквозь себя */
+    width: 250;      /* Настрой ширину под себя */
+    height: auto;
+}
+
+.choblya5 {
+    left: -70px;       /* Немного торчит слева */
+}
+
+.choblya6 {
+    right: -70px;      /* Немного торчит справа */
+}
+
+
+/* Контейнер всей страницы */
+
+/* 3. ШАПКА И МЕНЮ */
+header {
+    position: relative;
+    width: 100%;
+}
+
+.chtoeto {
+    width: 100%;
+    display: block;
+}
+
+
+
+/* 4. СТИЛИ ДЛЯ КАРТОЧЕК И ТЕКСТА (КАЛЕВАЛА) */
+.kalevala-page {
+    position: relative;
+    padding: 60px 40px;
+    max-width: 1400px;
+    justify-self: center;
+}
+
+
+.rune-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.rune-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--accent-blue);
+}
+
+.rune-title h1 {
+    font-size: 32px;
+    letter-spacing: 5px;
+    margin: 0;
+    border-bottom: 2px solid var(--accent-blue);
+    font-family: 'WildRune';
+}
+
+/* Сетки для картинок и текста */
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 30px;
+    margin: 40px 0;
+    align-items: center;
+    font-size: 32px;
+}
+
+.text-box {
+    padding: 20px;
+   font-size: 32px;
+    border-radius: 2px;
+}
+
+.central-text {
+    text-align: center;
+    font-size: 32px;
+    max-width: 600px;
+    margin: 40px auto;
+   
+}
+
+.item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Специфические секции (Сотворение и Рождение) */
+.creation-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.floating-text {
+    align-self: flex-start;
+    font-size: 32px;
+    max-width: 300px;
+    margin-top: -40px;
+    margin-left: 10%;
+    border-left: 2px solid var(--accent-blue);
+    padding-left: 15px;
+}
+
+.birth-section {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.character-img {
+    grid-column: 2;
+    justify-self: end;
+}
+
+/* 5. ГЛАВНАЯ МАГИЯ: АНИМАЦИЯ ПРИ СКРОЛЛЕ */
+
+/* Состояние ДО (убедись, что нет конфликтов) */
+.reveal {
+    opacity: 0 !important;
+    transform: translateY(50px) !important;
+    transition: all 0.8s ease-out !important;
+    visibility: visible !important; /* На всякий случай */
+}
+
+/* Состояние ПОСЛЕ */
+.reveal.active {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+/* Задержки, чтобы элементы в сетке вылетали по очереди */
+.grid-layout .item:nth-child(even) {
+    transition-delay: 0.2s;
+}
+
+/* Адаптив для телефонов */
+@media (max-width: 768px) {
+    .grid-layout, .birth-section {
+        grid-template-columns: 1fr;
+    }
+    .summary-container {
+        padding: 20px;
+    }
+    .floating-text {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* для хахаха3 */
+
+/* Картинка-шапка */
+.chtoeto {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    
+}
+
+.summary-container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 100px 20px;
+}
+
+
+
+.meaning-title-mini {
+    font-family: 'UraBumBum', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+   
+    
+}
+
+
+/* СИНИЙ БЛОК */
+.blue-block-wrap {
+    position: relative;
+    margin-bottom: 10px;
+     background-image: 'картинки/фончик для плашек.png';
+}
+
+.blue-bg-box {
+    position: relative; /* Оставляем для позиционирования "чобль" */
+    text-align: left;
+    font-size: 32px;
+    line-height: 1.7;
+    /* Центрирование */
+    width: 1400px;
+    max-width: 100%;      /* Важно: чтобы на маленьких экранах блок не вылезал за края */
+    margin-left: auto;
+    margin-right: auto;
+    
+    /* Если родитель — flex-контейнер, это тоже поможет */
+    display: block; 
+}
+
+.blue-bg-box h3 {
+    font-family: 'WildRune';
+}
+
+.meaning-text {
+    font-family: 'UraBumBum', sans-serif;
+    font-size: 32px;
+    margin: 0;
+    margin-top: 500px;
+}
+
+
+/* ЭЛЕМЕНТЫ ПЕРЕСКАЗА */
+.summary-item {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 80px;
+    align-items: center;
+}
+
+.summary-item.reverse { flex-direction: row-reverse; }
+
+.summary-image img {
+    width: 100%;
+    max-width: 450px;
+    border: 10px solid #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.summary-text h2 { font-family: 'WildRune'; font-size: 2rem; color: #4a3319; }
+
+/* Общие стили для обеих картинок */
+.choblya3, .choblya4 {
+    position: absolute;   /* Фиксируем их на экране */
+    top: 400px;          /* Положение от верхнего края */
+    z-index: -1;       /* Уводим под основной контент */
+    pointer-events: none; /* Пропускают клики сквозь себя */
+    width: 250;      /* Настрой ширину под себя */
+    height: auto;
+}
+
+.choblya3 {
+    left: -50px;       /* Немного торчит слева */
+}
+
+.choblya4 {
+    right: -50px;      /* Немного торчит справа */
+}
+
+
+/* БЛОК ГЕРОЕВ */
+.heroes-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.heroes-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.hero-btn {
+    background: none;
+    border: none;
+    font-family: 'WildRune', serif;
+    font-size: 1.4rem;
+    color: #2B4D50;
+    cursor: pointer;
+    padding: 5px 15px;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.hero-btn:hover, .hero-btn.active {
+    color: #6F9296;
+  
+    transform: translateY(-3px);
+}
+
+/* КАРТОЧКИ */
+.heroes-content-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 450px; /* Чтобы страница не прыгала при переключении */
+}
+
+.hero-card {
+    display: none; /* Скрыты по умолчанию */
+    animation: fadeInHero 0.6s ease forwards;
+}
+
+.hero-card.active {
+    display: block; /* Показываем только активную */
+}
+
+.hero-grid {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 40px;
+    background-image: url('картинки/допустим.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.hero-image img {
+    width: 450px;
+    height: 550px;
+    object-fit: contain;
+    margin: 20px;
+}
+
+.hero-info {
+    text-align: left;
+    color: #fff;
+}
+
+.hero-info h3 {
+    font-family: 'WildRune', serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero-info p {
+    font-family: 'UraBumBum', sans-serif;
+    font-size: 32px;
+    line-height: 1.6;
+}
+
+/* Анимация переключения */
+@keyframes fadeInHero {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Мобильная версия */
+@media (max-width: 850px) {
+    .hero-grid {
+        flex-direction: column;
+        background-size: cover;
+        padding: 30px 20px;
+    }
+    .hero-image img { width: 100%; height: auto; }
+    .hero-info { text-align: center; }
+}
+
+/* для 3 */
+
+.heroes-group-container {
+    margin-bottom: 60px;
+    padding: 20px;
+    border-radius: 15px;
+    /* Можно добавить легкую тень или фон, если хочешь их визуально разделить еще сильнее */
+}
+
+/* Навигация для второстепенных */
+.secondary-nav .hero-btn.small {
+    font-size: 32px;
+    opacity: 0.8;
+}
+
+/* Сами карточки (стиль остается прежним) */
+.hero-card {
+    display: none;
+}
+
+.hero-card.active {
+    display: block;
+    animation: fadeInHero 0.5s ease;
+}
+
+
+/* для 4 */
+.koleso1, .koleso2 {
+    position: relative;
+    width: 759px;
+    margin-top: -199px;
+    margin-bottom: -500px;
+}
+
+@keyframes rotation1 {
+  from {
+    transform: scaleX(-1) rotate(0deg);
+  }
+  to {
+    transform: scaleX(-1) rotate(45deg);
+  }
+}
+
+@keyframes rotation2 {
+  from {
+    transform: scaleX(-1) rotate(0deg);
+  }
+  to {
+    transform: scaleX(-1) rotate(-45deg);
+  }
+}
+
+.koleso1 {
+    left: -300px;
+   
+    animation: rotation1 1s ease forwards;
+}
+
+.koleso2 {
+    right: -700px;
+     animation: rotation2 1s ease  forwards;
+}
+
+/* Те самые чобли для синего блока */
+.hero-grid {
+    position: relative;
+    background-image: url('картинки/фончик для плашек.svg');
+    background-size: 100% 100%;
+    padding: 50px;
+    display: flex;
+    gap: 30px;
+}
+
+/* Текстовые блоки */
+.lang-intro-text {
+    max-width: 1400px;
+    margin: 0 auto 90px;
+    text-align: left;
+    font-family: 'UraBumBum', sans-serif;
+    line-height: 1.7;
+    font-size: 32px;
+    color: #000;
+}
+
+.scholar-quote {
+    margin-top: 30px;
+    padding-left: 20px;
+    
+    font-style: italic;
+    color: #6F9296;
+}
+
+.scholar-quote cite {
+    display: block;
+    margin-top: 10px;
+   
+    font-style: normal;
+}
+
+/* Сетка карточек слов */
+.word-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1400px;
+    margin: 40px auto;
+}
+
+.word-card {
+    height: 350px;
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative;
+    
+}
+
+.word-front, .word-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Скрывает заднюю сторону при перевороте */
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    
+}
+
+.word-front {
+    
+   background-image:  url('картинки/карточка слова.png') ;
+    font-family: 'WildRune', serif;
+    font-size: 2rem;
+    color: #fff;
+}
+
+.word-back {
+    background-image:  url('картинки/карточка слова.png') ;
+    color: #fff;
+    transform: rotateY(180deg);
+    text-align: center;
+    font-size: 32px;
+    font-family: 'UraBumBum', sans-serif;
+}
+
+.word-back strong {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 32px;
+    color: #fff;
+}
+
+/* Класс для активной карточки (переворот) */
+.word-card.flipped .word-front {
+    transform: rotateY(180deg);
+}
+
+.word-card.flipped .word-back {
+    transform: rotateY(360deg);
+}
+
+.instruction {
+    font-family: 'UraBumBum';
+    font-style: italic;
+    opacity: 0.6;
+}
+
+/* Общие стили секции рунопевцев */
+.runo-section {
+    max-width: 1400px;
+    margin: 100px auto;
+    padding: 0 20px;
+}
+
+/* Вводная сетка */
+.runo-intro-grid {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 60px;
+}
+
+.runo-intro-text {
+    flex: 1.2;
+}
+
+.runo-intro-text h3 {
+    font-family: 'WildRune', serif;
+    font-size: 2rem;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.runo-intro-text p {
+    font-family: 'UraBumBum', sans-serif;
+    font-size: 32px;
+    line-height: 1.7;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+.runo-intro-visual {
+    flex: 0.8;
+}
+
+.engraving-style-img {
+    width: 120%;
+    height: auto;
+   
+    
+}
+
+/* Специфика синего блока для кантеле */
+.kantele-info {
+    text-align: left;
+   
+    color: #fff;
+    max-width: 1200px;
+    height: 400px;
+    background-image: url('картинки/фончик для плашек.svg');
+ 
+    padding: 20px; /* Чтобы текст не прилипал к краям фона */
+}
+
+.kantele-info h3 {
+    font-family: 'UraBumBum', serif;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    margin-left: 30px;
+}
+
+.kantele-info p {
+    font-family: 'UraBumBum', sans-serif;
+    font-size: 32px;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 30px;
+}
+
+/* ИНТЕРАКТИВНЫЕ ТАБЫ ХРАНИТЕЛЕЙ */
+.sub-section-title {
+    font-family: 'WildRune', serif;
+    font-size: 2.2rem;
+    color: #000;
+    margin-top: 80px;
+    margin-bottom: 10px;
+}
+
+.singers-tabs {
+    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 30px;
+    border-radius: 12px;
+    
+    
+}
+
+.singers-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    border-bottom: 1px solid rgba(93, 64, 55, 0.2);
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+}
+
+.singer-btn {
+    background: none;
+    border: none;
+    font-family: 'UraBumBum', serif;
+    font-size: 2.2rem;
+    color: #6F9296;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.singer-btn:hover, .singer-btn.active {
+    color: #2B4D50;
+    transform: translateY(-2px);
+}
+
+/* Карточки сказителей */
+.singer-card {
+    display: none;
+}
+
+.singer-card.active {
+    display: block;
+    animation: fadeInTab 0.5s ease forwards;
+}
+
+.singer-grid {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.singer-img-wrap {
+    flex: 0.7;
+}
+
+.portrait-img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    
+   
+}
+
+.singer-bio {
+    flex: 1.3;
+}
+
+.singer-bio h4 {
+    font-family: 'UraBumBum', serif;
+    font-size: 2.2rem;
+    color: #000;
+    margin: 0 0 5px 0;
+}
+
+.singer-bio .meta {
+    font-family: 'UraBumBum', sans-serif;
+    font-style: italic;
+    color: #6F9296;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.singer-bio p {
+    font-family: 'UraBumBum', sans-serif;
+    font-size: 32px;
+    line-height: 1.6;
+    color: #000;
+}
+
+/* Стилизация вырезки из дневника */
+.diary-snippet {
+    margin-top: 25px;
+    padding: 15px 20px;
+    background: #A5D7FA;
+    font-family: 'UraBumBum', sans-serif;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.5;
+    color: #000;
+}
+
+/* Анимация переключения табов */
+@keyframes fadeInTab {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Адаптив под мобильные устройства */
+@media (max-width: 768px) {
+    .runo-intro-grid, .singer-grid {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .singers-nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .portrait-img {
+        max-width: 180px;
+    }
+}
+
+
+/* для 5 */
+
+
+.music-section {
+    max-width: 1200px;
+    margin: 100px auto;
+    text-align: center;
+    position: relative;
+}
+
+.music-description {
+    max-width: 600px;
+    margin: 20px auto 40px;
+    font-family: 'UraBumBum', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 600px; /* Настрой под свой дизайн */
+}
+
+.static-gramophone {
+    position: absolute;
+    right: 50px; /* Положение как на макете */
+    z-index: 10;
+    pointer-events: none; /* Пропускает клики сквозь себя */
+    height: 100%;
+}
+
+.slides-viewport {
+    width: 900px; /* Ширина рамки под альбом */
+    height: 500px;
+    display: flex;
+    overflow: hidden; /* Прячем остальные слайды */
+    scroll-behavior: smooth;
+    border: 1px solid #ccc; /* Рамка из твоего макета */
+    background: #fff;
+}
+
+.music-slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.album-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.album-frame img {
+    max-height: 350px;
+    margin-bottom: 20px;
+}
+
+.nav-arrow {
+    position: absolute;
+    z-index: 20;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }

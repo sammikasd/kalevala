@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калевала — Эпос и Маршруты</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="overlay-menu" class="menu-overlay">
+       
+        <div class="menu-content">
+            <h2 class="menu-title">МЕНЮ</h2>
+            <nav>
+                <a href="jajaja.html" onclick="toggleMenu()">главная</a>
+                <a href="jajaja2.html" onclick="toggleMenu()">краткий пересказ</a>
+                <a href="#meaning" onclick="toggleMenu()">концепция мироздания</a>
+                <a href="jajaja3.html" onclick="toggleMenu()">главные герои</a>
+                <a href="jajaja4.html" onclick="toggleMenu()">отражение в народной культуре</a>
+                <a href="jajaja5.html" onclick="toggleMenu()">Калевала в современном искусстве</a>
+            </nav>
+        </div>
+    </div>
+
+    <header>
+        <div class="burger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </header>
+
+   <section id="hero" class="hero">
+    <div class="layer layer-bg"></div> 
+    <div class="layer layer-trees"></div>
+    <div class="layer layer-whaaa"></div>
+    <div class="layer layer-deer"></div>
+    
+    <div class="hero-content">
+        <h1 class="hero-title"><img src="картинки/бан.png" alt="Калевала"></h1>
+        <img src="картинки/логотип.png" alt="ВХУТЕИН Логотип" class="hero-logo">
+    </div>
+</section>
+<img class="choblya1" src="картинки/сбоку штука.png"><img class="choblya2" src="картинки/сбоку штука.png">
+<main>
+    <div class="decorative-divider">
+        <img src="картинки/красотулька.png" alt="Декор" class="divider-img">
+    </div>
+    <div class="content-wrapper">
+        
+       <section class="bio-block reveal">
+       <h2 class="meaning-title">
+                    <span class="marker-wrap">
+                        <svg class="marker-svg" viewBox="0 0 400 20" preserveAspectRatio="none">
+                            <path d="M5,10 L395,10" stroke="#A8CDCF" stroke-width="18" stroke-linecap="round" />
+                        </svg>
+                        <span class="highlight">ОТКУДА ВЗЯЛАСЬ &gt;КАЛЕВАЛА&lt;?</span>
+                    </span>
+                </h2>
+
+    <div class="bio-main">
+        <div class="bio-image">
+    <img src="картинки/леннрот.png" class="img-front" alt="Элиас Лённрот">
+  
+</div>
+
+        <div class="bio-text">
+            <p>
+                <span class="marker-wrap">
+                    <svg class="marker-svg" viewBox="0 0 300 20" preserveAspectRatio="none">
+                        <path d="M5,10 L295,10" stroke="#A8CDCF" stroke-width="15" stroke-linecap="round" filter="url(#filter0_g_1610_123)" />
+                    </svg>
+                    <strong class="highlight">Элиас Лённрот (Elias Loennrot)</strong>
+                </span>
+                — финский лингвист, фольклорист. Именно он собрал и составил из отдельных легенд поэтический эпос "Калевала".
+            </p>
+        </div>
+    </div>
+
+    <p class="bio-footer">
+        Лённрот много путешествовал по Лапландии, русской Карелии и Финляндии, собирая фольклорные легенды, песни и рассказы. Так, “Калевала” родилась из легенд, собранных в Каяани, Войнице, Ухте и других деревнях 
+с 1833 по 1837 года. 
+    </p>
+</section>
+</main>
+
+ <div class="content-wrapper">
+    <section id="map-section" class="report-section">
+            
+           <h2 class="meaning-title">
+                    <span class="marker-wrap">
+                        <svg class="marker-svg" viewBox="0 0 400 20" preserveAspectRatio="none">
+                            <path d="M5,10 L395,10" stroke="#A8CDCF" stroke-width="18" stroke-linecap="round" />
+                        </svg>
+                        <span class="highlight">ГЛАВНЫЕ МАРШРУТЫ ЛЁННРОТА</span>
+                    </span>
+                </h2>
+
+         <div class="map-legend-container reveal">
+                <div class="map-box">
+                    <img src="картинки/карта.png" alt="Карта" class="base-map">
+                    
+                    <div id="route-1833" class="route-layer active">
+                        <img src="картинки/Frame 64.png" alt="1833">
+                    </div>
+                    <div id="route-1834" class="route-layer">
+                        <img src="картинки/Frame 62 1.png" alt="1834">
+                    </div>
+                    <div id="route-1835" class="route-layer">
+                        <img src="картинки/Frame 63.png" alt="1835">
+                    </div>
+                    <div id="route-1836" class="route-layer">
+                        <img src="картинки/Frame 61.png" alt="1836-1837">
+                    </div>
+                </div>
+
+                <aside class="map-legend">
+                    <div class="date-item active" onclick="switchRoute('1833', this)">
+                        <h3>1833</h3>
+                        <p>Каяани, река Вуокиниоки, Каменное озеро, Войница, Вокнаволок, Каяани</p>
+                    </div>
+                    <hr class="legend-divider">
+                    <div class="date-item1" onclick="switchRoute('1834', this)">
+                        <h3>1834</h3>
+                        <p>Войница, Ювялякша, Ухта (ныне Калевала), Вокнаволок, Каменное озеро и Паавозеро</p>
+                    </div>
+                    <hr class="legend-divider">
+                    <div class="date-item2" onclick="switchRoute('1835', this)">
+                        <h3>1835</h3>
+                        <p>Реболы, Ругозеро, Юшкозеро, Ухта, Ювялякша, Вокнаволок</p>
+                    </div>
+                    <hr class="legend-divider">
+                    <div class="date-item3" onclick="switchRoute('1836', this)">
+                        <h3>1836-1837</h3>
+                        <p>Ухта, Кереть, Ковда, Кандалакша, Кола, Петсамо, Вокнаволок, Реболы</p>
+                    </div>
+
+                    <div class="legend-keys">
+                        <div class="key-item">
+                            <img src="картинки/полоска.svg" >
+                            <span class="key-text"> - путь Лённрота</span>
+                        </div>
+                        <div class="key-item">
+                            <img src="картинки/метка.svg" >
+                            <span class="key-text"> - точка маршрута</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <p class="history-text reveal">
+                В Ладвозере он познакомился с известными карельскими рунопевцами – 
+                <strong>Архипом Перттуненом</strong> и <strong>Вассилой Киелевяйненом</strong>.
+            </p>
+
+            <div class="photos-row reveal">
+                <div class="photo-item">
+                    <img src="картинки/image 38.png" alt="Архип Перттунен">
+                    <p>Архип Перттунен, карельский рунопевец</p>
+                </div>
+                <div class="photo-item">
+                    <img src="картинки/image 39.png" alt="Рунический камень">
+                    <p>Памятник рунопевцам "Камень Ваассилы" (д. Войница)</p>
+                </div>
+            </div>
+
+            <div class="editions-block reveal">
+                <p>
+                    В 1835 году вышло 1-е издание "Калевалы", включавшее в себя более 12000 стихов*, 
+                    а в 1849 году вышло второе издание с 22795 стихами.
+                </p>
+                <div class="asterisk-note">
+                    <span class="symbol">*</span> Стих — строка в стихотворении
+                </div>
+            </div>
+    </section>
+            <section id="meaning" class="meaning-section reveal">
+                <div class="decorative-divider">
+                    <img src="картинки/красотулька.png" alt="Декор" class="divider-img">
+                </div>
+
+                <h2 class="meaning-title">
+                    <span class="marker-wrap">
+                        <svg class="marker-svg" viewBox="0 0 400 20" preserveAspectRatio="none">
+                            <path d="M5,10 L395,10" stroke="#A8CDCF" stroke-width="18" stroke-linecap="round" />
+                        </svg>
+                        <span class="highlight">ПОЧЕМУ >КАЛЕВАЛА< ТАК НАЗЫВАЕТСЯ?</span>
+                    </span>
+                </h2>
+<div class="ogo-wrap">
+    <img src="картинки/ого 1.png" class="ogo-front" alt="Описание">
+    <img src="картинки/ого.png" class="ogo-back" alt="Описание">
+
+    <div class="map-hotspot hotspot-vaina" onclick="toggleKalevalaBubble('vaina')"></div>
+    <div class="map-hotspot hotspot-izba" onclick="toggleKalevalaBubble('izba')"></div>
+    <div class="map-hotspot hotspot-sampo" onclick="toggleKalevalaBubble('sampo')"></div>
+
+    <div class="speech-bubble bubble-vaina-1" id="bubble-vaina-1">
+        <img src="картинки/баббл_вяйня_1.png" alt="Мне пришло одно желанье...">
+    </div>
+    <div class="speech-bubble bubble-vaina-2" id="bubble-vaina-2">
+        <img src="картинки/баббл_вяйня_2.png" alt="...Чтоб пропеть мне предков песню">
+    </div>
+
+    <div class="speech-bubble bubble-izba" id="bubble-izba">
+        <img src="картинки/баббл_изба.png" alt="В дальних северных полянах...">
+    </div>
+
+    <div class="speech-bubble bubble-sampo" id="bubble-sampo">
+        <img src="картинки/баббл_сампо.png" alt="Пели мне они о Сампо...">
+   
+</div>
+</div>
+                </div>
+
+                <div class="meaning-description">
+                    <p>Название "Калевала", данное поэме <strong>Лённротом</strong>, — это эпическое имя страны, в которой живут и действуют карельские народные герои.</p>
+                    <p>Суффикс <em>la</em> означает место жительства, так что <strong>Kalevala</strong> — это место жительства Калева, мифологического родоначальника богатырей.</p>
+                </div>
+            </section>
+
+            <section id="footer-nav" class="footer-navigation reveal">
+                <div class="decorative-divider">
+                    <img src="картинки/красотулька.png" alt="Декор" class="divider-img">
+                </div>
+
+                 <h2 class="meaning-title">
+                    <span class="marker-wrap">
+                        <svg class="marker-svg" viewBox="0 0 400 20" preserveAspectRatio="none">
+                            <path d="M5,10 L395,10" stroke="#A8CDCF" stroke-width="18" stroke-linecap="round" />
+                        </svg>
+                        <span class="highlight">УЗНАТЬ БОЛЬШЕ:</span>
+                    </span>
+                </h2>
+
+                <nav class="footer-links">
+                    <ul>
+                        <li><a href="jajaja.html">главная</a></li>
+                        <li><a href="jajaja2.html">краткий пересказ</a></li>
+                        <li><a href="jajaja3.html">главные герои</a></li>
+                        <li><a href="cosmology.html">концепт мироздания</a></li>
+                        <li><a href="jajaja4.html">отражение в народной культуре</a></li>
+                        <li><a href="jajaja5.html">калевала в современном искусстве</a></li>
+                    </ul>
+                </nav>
+            </section>
+
+        </section>
+    </div>
+    <button id="backToTop" title="Наверх"></button>
+     <footer class="main-footer reveal">
+        <div class="footer-bottom-wave">
+            <div class="footer-content-wrap">
+                <div class="social-links">
+                    <a href="https://t.me/your_link" target="_blank" class="social-icon">Telegram</a>
+                    <a href="https://vk.com/your_link" target="_blank" class="social-icon">ВКонтакте</a>
+                </div>
+
+                <div class="university-logo">
+                    <a href="https://vhutein.ru" target="_blank">
+                        <span class="vhutein-text"><img src="картинки/vhutein.png"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

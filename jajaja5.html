@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калевала — Краткий пересказ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="overlay-menu" class="menu-overlay">
+        <div class="menu-content">
+            <h2 class="menu-title">МЕНЮ</h2>
+            <nav>
+                <a href="jajaja.html" onclick="toggleMenu()">главная</a>
+                <a href="jajaja2.html" onclick="toggleMenu()">краткий пересказ</a>
+                <a href="#meaning" onclick="toggleMenu()">концепция мироздания</a>
+                <a href="jajaja3.html" onclick="toggleMenu()">главные герои</a>
+                <a href="jajaja4.html" onclick="toggleMenu()">отражение в народной культуре</a>
+                <a href="jajaja5.html" onclick="toggleMenu()">Калевала в современном искусстве</a>
+            </nav>
+        </div>
+    </div>
+
+    <header>
+        <div class="burger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <img src="картинки/фон для остальных страниц.png" class="chtoeto" alt="">
+         <img src="картинки/колесико.png" class="koleso1" alt=""><img src="картинки/колесико.png" class="koleso2" alt="">
+    </header>
+
+    <main class="summary-container">
+        <div class="summary-header">
+            <h2 class="meaning-title reveal">Калевала в народе</h2>
+            <p class="meaning-title-mini reveal">влияние Калевалы на фольклор</p>
+        </div>
+
+       
+
+        <div class="blue-block-wrap reveal">
+            <img src="картинки/сбоку штука меньше средней.png" class="choblya5" alt="">
+            <img src="картинки/сбоку штука меньше средней.png" class="choblya6" alt="">
+
+            <div class="blue-bg-box">
+                <p class="meaning-text">
+                    Калевала оставила большой след во всех сферах искусства и стала большим вдохновением для писателей, скульпторов и даже музыкантов. Её отголоски видны даже на туристических маршрутах Выборга, Карелии и Финляндии. Но обо всем по порядку. 
+                </p>
+            </div>
+        </div>
+   
+        <section class="music-section reveal">
+    <div class="music-container">
+        
+        <h2 class="meaning-title">
+            <span class="marker-wrap">
+                <span class="highlight">МУЗЫКА</span>
+                <svg class="marker-svg" viewBox="0 0 400 20" preserveAspectRatio="none">
+                    <path d="M5,10 L395,10" stroke="#A8CDCF" stroke-width="18" stroke-linecap="round" />
+                </svg>
+            </span>
+        </h2>
+
+        <p class="music-description">
+            К калевальским мотивам обращаются многие метал-группы из Финляндии, 
+            но также есть и российские исполнители, воспевающие карельскую магию.
+        </p>
+
+        <div class="slider-wrapper">
+    <img src="картинки/граммофон1.png" alt="" class="static-gramophone">
+
+    <button class="nav-arrow prev" onclick="moveSlider(-1)">
+        <img src="картинки/влево.png" alt="Назад">
+    </button>
+    <button class="nav-arrow next" onclick="moveSlider(1)">
+        <img src="картинки/вправо.png" alt="Вперед">
+    </button>
+
+    <div class="slides-viewport" id="musicSlider">
+        
+        <div class="music-slide">
+             <div class="album-frame">
+                 <img src="картинки/сибелиус.jpg" alt="Ян Сибелиус">
+                 <p class="album-caption">Ян Сибелиус</p>
+             </div>
+        </div>
+
+        <div class="music-slide">
+             <div class="album-frame">
+                 <img src="картинки/аморфис.jpg" alt="Amorphis">
+                 <p class="album-caption">Amorphis — Tales from the Thousand Lakes</p>
+             </div>
+        </div>
+
+        <div class="music-slide">
+             <div class="album-frame">
+                 <img src="картинки/миллярит.webp" alt="Myllärit">
+                 <p class="album-caption">Группа Myllärit</p>
+             </div>
+        </div>
+
+        <div class="music-slide">
+             <div class="album-frame">
+                 <img src="картинки/корпиклаани.jpg" alt="Korpiklaani">
+                 <p class="album-caption">Группа Korpiklaani</p>
+             </div>
+        </div>
+
+        <div class="music-slide">
+             <div class="album-frame">
+                 <img src="картинки/калевала.jpg" alt="группа Калевала">
+                 <p class="album-caption">Рок-группа «Калевала»</p>
+             </div>
+        </div>
+
+    </div>
+</div>
+    
+</section>
+<button id="backToTop" title="Наверх"></button>
+ </main>
+    <footer class="main-footer reveal">
+        <div class="footer-bottom-wave">
+            <div class="footer-content-wrap">
+                <div class="social-links">
+                    <a href="#" class="social-icon">Telegram</a>
+                    <a href="#" class="social-icon">ВКонтакте</a>
+                </div>
+                <div class="university-logo">
+                    <a href="https://vhutein.ru" target="_blank">
+                        <img src="картинки/vhutein.png" alt="ВХУТЕИН">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
