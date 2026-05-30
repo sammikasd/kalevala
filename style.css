@@ -1510,7 +1510,7 @@ header {
 
 .hero-info p {
     font-family: 'UraBumBum', sans-serif;
-    font-size: 32px;
+    font-size: 2rem;
     line-height: 1.6;
 }
 
@@ -1986,3 +1986,209 @@ header {
 
 .prev { left: 20px; }
 .next { right: 20px; }
+
+
+jajaja6
+
+/* Общая секция */
+.kalevala-map-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.map-main-title {
+    font-family: 'WildRune', sans-serif;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #000;
+}
+
+/* Обертка интерактивной карты */
+.map-interactive-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px; /* Ограничиваем максимальную ширину для сохранения качества */
+    margin: 0 auto;
+}
+
+.main-map-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.3s ease-in-out; /* Плавное мигание при смене карты */
+}
+
+/* Базовая обертка для хотспота (метки) */
+.map-hotspot-wrapper {
+    position: absolute;
+    cursor: pointer;
+    z-index: 20;
+    width: 32px;  /* Ширина кликабельной зоны метки */
+    height: 42px; /* Высота кликабельной зоны метки */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- КООРДИНАТЫ МЕТОК НА КАРТЕ (в процентах для адаптивности) --- */
+.hotspot-tuonela {
+    bottom: 12%;
+    left: 48%;
+}
+
+.hotspot-pohjola {
+    
+    top: 45%;
+    right: 25%;
+}
+
+.hotspot-suomi {
+    top: 25%;
+    left: 35%;
+}
+
+.hotspot-nebo {
+    top: 10%;
+    left: 62%;
+}
+
+/* Стили самой SVG-метки */
+.marker-svg {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* Эффект при наведении на метку */
+.map-hotspot-wrapper:hover .marker-svg {
+    transform: scale(1.15);
+}
+
+/* Стили PNG-плашки с названием (Tooltip) */
+.place-tooltip-png {
+    position: absolute;
+    bottom: 110%; /* Появляется строго НАД меткой */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px); /* Смещение вниз для эффекта вылета */
+    width: 150px; /* Задай ширину под размеры твоих картинок-плашек */
+    height: auto;
+    opacity: 0;
+    pointer-events: none; /* Чтобы плашка не мешала кликать */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 30;
+}
+
+/* Показываем PNG-плашку при наведении на хотспот */
+.map-hotspot-wrapper:hover .place-tooltip-png {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Добавь эти стили к уже существующему CSS карты из предыдущего ответа */
+
+/* Координаты для новой метки Сампо */
+.hotspot-sampo {
+   top: 32%;
+    right: 32%; 
+}
+
+/* Стили слайдера под картой */
+.map-slider-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.map-slider-viewport {
+    flex-grow: 1;
+    overflow: hidden;
+    
+    background-color: #fff;
+}
+
+.map-slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Плавный сдвиг карточек */
+}
+
+.map-slide-card {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 40px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.slide-info-col { flex: 1; }
+.slide-image-col { flex: 1; display: flex; justify-content: center; }
+.slide-image-col img { max-width: 100%; height: auto; object-fit: contain; }
+
+.slide-place-title {
+    font-family: 'WildRune', sans-serif;
+    font-size: 28px;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+.slide-place-title::after {
+    content: '';
+    position: absolute;
+    left: -10px;
+    bottom: -2px;
+    width: 115%;
+    height: 80%;
+   
+    z-index: -1;
+    filter: blur(4px);
+    border-radius: 4px;
+}
+
+.slide-desc-paragraph { font-size: 2rem; line-height: 1.6; margin-bottom: 15px; color: #000; }
+.map-arrow { background: none; border: none; width: 30px; height: 50px; cursor: pointer; position: relative; }
+.map-arrow::before { content: ''; position: absolute; top: 50%; width: 20px; height: 20px; border-top: 3px solid #a8cdcf; border-left: 3px solid #a8cdcf; }
+.prev-arrow::before { left: 5px; transform: translateY(-50%) rotate(-45deg); }
+.next-arrow::before { right: 5px; transform: translateY(-50%) rotate(135deg); }
+
+/* --- СТИЛИ ДЛЯ ПЛАВНОГО ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ (REVEAL) --- */
+
+/* Исходное состояние: элементы скрыты и немного смещены вниз */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px); /* Мягкое смещение на 40 пикселей вниз */
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform; /* Оптимизация для плавной работы браузера */
+}
+
+/* Состояние, когда JS зафиксировал скролл и добавил класс active */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0); /* Элемент встает на свое законное место */
+}
+
+/* ЭФФЕКТ КАСКАДА: Задаем небольшие задержки, чтобы объекты появлялись по очереди */
+
+/* Карта появится на 150 миллисекунд позже заголовка */
+.map-interactive-container.reveal {
+    transition-delay: 0.15s;
+}
+
+/* Текст под картой появится еще чуть позже */
+.map-caption-text.reveal {
+    transition-delay: 0.3s; 
+    font-size: 2rem;
+}
+
+/* Нижний слайдер с карточками покажется самым последним */
+.map-slider-wrapper.reveal {
+    transition-delay: 0.45s;
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калевала — Краткий пересказ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+    <div id="overlay-menu" class="menu-overlay">
+        <div class="menu-content">
+            <h2 class="menu-title">МЕНЮ</h2>
+            <nav>
+                <a href="index.html" onclick="toggleMenu()">главная</a>
+                <a href="jajaja2.html" onclick="toggleMenu()">краткий пересказ</a>
+                <a href="jajaja6.html" onclick="toggleMenu()">концепция мироздания</a>
+                <a href="jajaja3.html" onclick="toggleMenu()">главные герои</a>
+                <a href="jajaja4.html" onclick="toggleMenu()">отражение в народной культуре</a>
+                <a href="jajaja5.html" onclick="toggleMenu()">Калевала в современном искусстве</a>
+            </nav>
+        </div>
+    </div>
+
+    <header>
+        <div class="burger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <img src="картинки/фон для остальных страниц.png" class="chtoeto" alt="">
+         <img src="картинки/колесико.png" class="koleso1" alt=""><img src="картинки/колесико.png" class="koleso2" alt="">
+    </header>
+
+    <main class="summary-container">
+        <div class="summary-header">
+            <h2 class="meaning-title reveal">Краткий пересказ</h2>
+            <p class="meaning-title-mini reveal">основные события сюжета</p>
+        </div>
+
+    
+
+        <div class="blue-block-wrap reveal">
+            <img src="картинки/сбоку штука короткая.png" class="choblya5" alt="">
+            <img src="картинки/сбоку штука короткая.png" class="choblya6" alt="">
+
+            <div class="blue-bg-box">
+                <p class="meaning-text">
+                    Калевала — это не просто сборник рун, это история о столкновении двух миров: 
+                    светлой Калевалы и мрачной Похъёлы. Глубинный смысл кроется в вечном поиске 
+                    счастья (Сампо) и понимании того, что любое созидание требует жертв <br> и мудрости.
+                </p>
+            </div>
+        </div>
+<section class="kalevala-page">
+  <div class="decor-border left"></div>
+  <div class="decor-border right"></div>
+  <section class="kalevala-map-section">
+    <h2 class="map-main-title reveal">КАРТА КАЛЕВАЛЫ</h2>
+    
+    <div class="map-interactive-container reveal">
+        <img src="картинки/карта калевала1.png" alt="Карта Калевалы" id="mainMapImage" class="main-map-img">
+
+        <div class="map-hotspot-wrapper hotspot-tuonela" onclick="selectPlace(1, 2)">
+            <img src="картинки/место туонела.png" alt="Туонела" class="place-tooltip-png">
+            <img src="картинки/метка2.svg" alt="Метка" class="marker-svg">
+        </div>
+
+        <div class="map-hotspot-wrapper hotspot-pohjola" onclick="selectPlace(2, 3)">
+            <img src="картинки/место похъёла.png" alt="Похъёла" class="place-tooltip-png">
+            <img src="картинки/метка2.svg" alt="Метка" class="marker-svg">
+        </div>
+
+        <div class="map-hotspot-wrapper hotspot-suomi" onclick="selectPlace(0, 4)">
+            <img src="картинки/место суоми.png" alt="Суоми" class="place-tooltip-png">
+            <img src="картинки/метка2.svg" alt="Метка" class="marker-svg">
+        </div>
+
+        <div class="map-hotspot-wrapper hotspot-nebo" onclick="selectPlace(4, 5)">
+            <img src="картинки/место небо.png" alt="Небо" class="place-tooltip-png">
+            <img src="картинки/метка2.svg" alt="Метка" class="marker-svg">
+        </div>
+
+        <div class="map-hotspot-wrapper hotspot-sampo" onclick="selectPlace(3, null)">
+            <img src="картинки/место сампо.png" alt="Сампо" class="place-tooltip-png">
+            <img src="картинки/метка2.svg" alt="Метка" class="marker-svg">
+        </div>
+    </div>
+
+    <p class="map-caption-text reveal">
+        Мир Калевалы полон магических мест, каждое из которых имеет своих "покорных слуг" и является сильной метафорой.
+    </p>
+    
+    <div class="map-slider-wrapper reveal">
+        <button class="map-arrow prev-arrow" onclick="moveMapSlider(-1)"></button>
+        
+        <div class="map-slider-viewport" id="mapSlider">
+            <div class="map-slider-track">
+                
+                <div class="map-slide-card">
+                    <div class="slide-info-col">
+                        <h3 class="slide-place-title"><span>СУОМИ</span></h3>
+                        <p class="slide-desc-paragraph">Земля озер и лесов, бескрайний дом для отважных героев Калевалы.</p>
+                        <p class="slide-desc-paragraph">Здесь рождаются песни и куются великие сюжеты рунического эпоса.</p>
+                    </div>
+                    <div class="slide-image-col">
+                        <img src="картинки/суоми.png" alt="Иллюстрация Суоми">
+                    </div>
+                </div>
+
+                <div class="map-slide-card">
+                    <div class="slide-info-col">
+                        <h3 class="slide-place-title"><span>ТУОНЕЛА</span></h3>
+                        <p class="slide-desc-paragraph">Подземное царство мертвых, окруженное черной бурной рекой Туони.</p>
+                        <p class="slide-desc-paragraph">Сюда отправляются за тайными знаниями, преодолевая смертельные опасности.</p>
+                    </div>
+                    <div class="slide-image-col">
+                        <img src="картинки/туонела.png" alt="Иллюстрация Туонелы">
+                    </div>
+                </div>
+
+                <div class="map-slide-card">
+                    <div class="slide-info-col">
+                        <h3 class="slide-place-title"><span>ПОХЪЁЛА</span></h3>
+                        <p class="slide-desc-paragraph">Суровые, туманные и мрачные северные земли под властью хитрой колдуньи Лоухи.</p>
+                        <p class="slide-desc-paragraph">Вечное противостояние южной Калевалы и ледяного, таинственного Севера.</p>
+                    </div>
+                    <div class="slide-image-col">
+                        <img src="картинки/похъёла.png" alt="Иллюстрация Похъелы">
+                    </div>
+                </div>
+
+                <div class="map-slide-card">
+                    <div class="slide-info-col">
+                        <h3 class="slide-place-title"><span>САМПО</span></h3>
+                        <p class="slide-desc-paragraph">Волшебная чудо-мельница, выкованная Ильмариненом. Она мелет муку, соль и золото.</p>
+                        <p class="slide-desc-paragraph">Символ бесконечного изобилия, счастья и благополучия, за который бьются народы.</p>
+                    </div>
+                    <div class="slide-image-col">
+                        <img src="картинки/сампо.png" alt="Иллюстрация Сампо">
+                    </div>
+                </div>
+
+                <div class="map-slide-card">
+                    <div class="slide-info-col">
+                        <h3 class="slide-place-title"><span>НЕБЕСНЫЙ СВОД</span></h3>
+                        <p class="slide-desc-paragraph">Сфера высших сил и звезд кузнеца Ильмаринена, сотворившего небесный купол.</p>
+                        <p class="slide-desc-paragraph">Обитель Укко — верховного бога громы и молнии, направляющего судьбы земных героев.</p>
+                    </div>
+                    <div class="slide-image-col">
+                        <img src="картинки/небо.png" alt="Иллюстрация Неба">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <button class="map-arrow next-arrow" onclick="moveMapSlider(1)"></button>
+    </div>
+     <p class="map-caption-text reveal">
+        Мир Калевалы полон магических мест, каждое из которых имеет своих "покорных слуг" и является сильной метафорой.
+    </p>
+</section>
+
+</main>
+<button id="backToTop" title="Наверх"></button>
+    <footer class="main-footer reveal">
+        <div class="footer-bottom-wave">
+            <div class="footer-content-wrap">
+                <div class="social-links">
+                    <a href="#" class="social-icon">Telegram</a>
+                    <a href="#" class="social-icon">ВКонтакте</a>
+                </div>
+                <div class="university-logo">
+                    <a href="https://vhutein.ru" target="_blank">
+                        <img src="картинки/vhutein.png" alt="ВХУТЕИН">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

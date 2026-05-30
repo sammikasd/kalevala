@@ -3,13 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Script loaded and DOM ready');
 
     /* --- 1. АНИМАЦИЯ ПОЯВЛЕНИЯ (REVEAL) --- */
-    // Создаем ОДИН наблюдатель для всех блоков на всех страницах
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                // Если нужно, чтобы анимация была один раз, раскомментируй:
-                // revealObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1 });
@@ -50,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         
-        // Добавляем класс загрузки для hero
         hero.classList.add('loaded');
     }
 
@@ -72,6 +68,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+/* --- 4. МЕНЮ (BURGER) --- */
+function toggleMenu() {
+    const menu = document.getElementById('overlay-menu');
+    if (menu) {
+        menu.classList.toggle('open'); 
+    }
+}
 
 
 /* --- 5. СЛАЙДЕР (МУЗЫКАЛЬНЫЙ ГРАММОФОН) --- */
@@ -119,7 +123,8 @@ function showSinger(singerId, btn) {
     btn.classList.add('active');
 }
 
-/* --- 7. КАРТЫ И МАРШРУТЫ --- */
+
+/* --- 7. КАРТЫ И МАРШРУТЫ (СТАРЫЕ) --- */
 function switchRoute(year, element) {
     document.querySelectorAll('.route-layer').forEach(r => r.classList.remove('active'));
     document.querySelectorAll('[class^="date-item"]').forEach(d => d.classList.remove('active'));
@@ -135,23 +140,69 @@ function toggleWord(card) {
 
 function toggleKalevalaBubble(target) {
     if (target === 'vaina') {
-        // Переключаем сразу оба баббла Вяйнямёйнена
         document.getElementById('bubble-vaina-1').classList.toggle('active');
         document.getElementById('bubble-vaina-2').classList.toggle('active');
     } else if (target === 'izba') {
-        // Переключаем баббл избы
         document.getElementById('bubble-izba').classList.toggle('active');
     } else if (target === 'sampo') {
-        // Переключаем баббл горы Сампо
         document.getElementById('bubble-sampo').classList.toggle('active');
     }
 }
 
-/* --- 4. МЕНЮ (BURGER) --- */
-function toggleMenu() {
-    const menu = document.getElementById('overlay-menu');
-    if (menu) {
-        // Если в CSS у тебя рабочим остался класс .open, то напиши 'open' вместо 'active'
-        menu.classList.toggle('open'); 
-    }
+
+/* --- 8. ИНТЕРАКТИВНАЯ КАРТА КАЛЕВАЛЫ И СЛАЙДЕР СИНХРОНИЗАЦИЯ (ФИНАЛ) --- */
+let currentMapSlideIndex = 0;
+
+// Массив соответствия: Индекс слайда внизу -> Номер картинки карты сверху
+const slideToMapRoute = [4, 2, 3, null, 5];
+
+// Вспомогательная функция для плавной смены картинки карты
+function changeMapPicture(mapNumber) {
+    if (mapNumber === null) return; // Если у Сампо null, карту не трогаем
+    
+    const mapImage = document.getElementById('mainMapImage');
+    if (!mapImage) return;
+
+    mapImage.style.opacity = '0.3'; // Плавное гашение
+    
+    setTimeout(() => {
+        mapImage.src = `картинки/карта калевала${mapNumber}.png`;
+        mapImage.style.opacity = '1'; // Плавное появление
+    }, 150);
+}
+
+// Вызывается при клике на ХОТСПОРТЫ (метки) на карте
+function selectPlace(slideIndex, mapNumber) {
+    changeMapPicture(mapNumber);
+    currentMapSlideIndex = slideIndex;
+    updateMapSliderPosition();
+}
+
+// Вызывается при клике на СТРЕЛКИ слайдера карты
+function moveMapSlider(direction) {
+    const slides = document.querySelectorAll('.map-slide-card');
+    if (slides.length === 0) return;
+
+    currentMapSlideIndex += direction;
+
+    // Циклический скролл границ слайдера карты
+    if (currentMapSlideIndex >= slides.length) currentMapSlideIndex = 0;
+    if (currentMapSlideIndex < 0) currentMapSlideIndex = slides.length - 1;
+
+    // Автоматически находим нужную карту для этого слайда и переключаем ее
+    const associatedMapNumber = slideToMapRoute[currentMapSlideIndex];
+    changeMapPicture(associatedMapNumber);
+
+    updateMapSliderPosition();
+}
+
+// Функция сдвига ленты слайдера карты через CSS transform
+function updateMapSliderPosition() {
+    const viewport = document.getElementById('mapSlider');
+    const track = viewport ? viewport.querySelector('.map-slider-track') : null;
+    
+    if (!viewport || !track) return;
+
+    const offset = viewport.clientWidth * currentMapSlideIndex;
+    track.style.transform = `translateX(-${offset}px)`;
 }
