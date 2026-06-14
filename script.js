@@ -1,20 +1,240 @@
-// Ждем полной загрузки DOM
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Script loaded and DOM ready');
+/* ==========================================================================
+   1. НАСТРОЙКА ОБЪЕДИНЕННЫХ РУН (СТРУКТУРА НА ВСЕ 50 РУН)
+   ========================================================================== */
+const volumesConfig = {
+    "volume-1":     { title: "РУНА 1",       part: "ЧАСТЬ I • СОТВОРЕНИЕ МИРА" },
+    "volume-2-3":   { title: "РУНЫ 2 – 3",   part: "ЧАСТЬ II • ВЫЗОВ ЙОУКАХАЙНЕНА" },
+    "volume-4-6":   { title: "РУНЫ 4 – 6",   part: "ЧАСТЬ III • СУДЬБА КРАСАВИЦЫ АЙНО" },
+    "volume-7":   { title: "РУНА 7",   part: "ЧАСТЬ IV • ПЛЕННИК СЕВЕРНОЙ ПОХЪЁЛЫ" },
+    "volume-8-10":  { title: "РУНЫ 8 – 10",  part: "ЧАСТЬ V • МАГИЧЕСКАЯ КУЗНИЦА" },
+    "volume-11-15": { title: "РУНЫ 11 – 15", part: "ЧАСТЬ VI • УДАЛОЙ ЛЕММИНКЯЙНЕН" },
+    "volume-16-20": { title: "РУНЫ 16 – 20", part: "ЧАСТЬ VII • ПОГОНЯ ЗА НЕВЕСТОЙ" },
+    "volume-21-25": { title: "РУНЫ 21 – 25", part: "ЧАСТЬ VIII • ВЕЛИКАЯ СВАДЬБА ВЕКА" },
+    "volume-26-30": { title: "РУНЫ 26 – 30", part: "ЧАСТЬ IX • МЕСТЬ ЛЕММИНКЯЙНЕНА" },
+    "volume-31-36": { title: "РУНЫ 31 – 36", part: "ЧАСТЬ X • ТРАГИЧЕСКИЙ РОК КУЛЛЕРВО" },
+    "volume-37-38": { title: "РУНЫ 37 – 38", part: "ЧАСТЬ XI • ЗОЛОТАЯ ДЕВА" },
+    "volume-39-44": { title: "РУНЫ 39 – 44", part: "ЧАСТЬ XII • ПОХИЩЕНИЕ САМПО" },
+    "volume-45-49": { title: "РУНЫ 45 – 49", part: "ЧАСТЬ XIII • БИТВА ЗА СВЕТ" },
+    "volume-50":    { title: "РУНА 50",       part: "ЧАСТЬ XIV • УХОД ПРОРОКА" }
+};
 
-    /* --- 1. АНИМАЦИЯ ПОЯВЛЕНИЯ (REVEAL) --- */
+const volumeOrder = Object.keys(volumesConfig);
+let currentIdx = 0; // Начинаем с первой доступной главы
+
+/* --- Функция переключения тома (по ID) --- */
+function selectRune(volumeId) {
+    // Проверяем, есть ли вообще такие блоки на текущей странице, чтобы не вызвать ошибку
+    if (!document.getElementById(volumeId)) return;
+    
+    currentIdx = volumeOrder.indexOf(volumeId);
+    
+    // 1. Прячем все тома и показываем нужный
+    document.querySelectorAll('.rune-volume').forEach(vol => {
+        vol.classList.add('hidden');
+    });
+    document.getElementById(volumeId).classList.remove('hidden');
+    
+    // 2. Обновляем тексты в шапке
+    const titleEl = document.getElementById('current-rune-title');
+    const partEl = document.getElementById('current-part-label');
+    if (titleEl) titleEl.innerText = volumesConfig[volumeId].title;
+    if (partEl) partEl.innerText = volumesConfig[volumeId].part;
+    
+    // 3. Подсвечиваем активную строку в меню
+    document.querySelectorAll('.menu-item').forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('data-target') === volumeId) {
+            item.classList.add('active');
+        }
+    });
+    
+    // 4. Управляем стрелочками навигации
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    if (prevBtn) prevBtn.style.visibility = (currentIdx === 0) ? 'hidden' : 'visible';
+    if (nextBtn) nextBtn.style.visibility = (currentIdx === volumeOrder.length - 1) ? 'hidden' : 'visible';
+    
+   
+    
+    // Закрываем выпадающее меню рун
+    const menu = document.getElementById('kalevala-overlay-menu');
+    if (menu) menu.classList.remove('open');
+    const chevron = document.querySelector('.dropdown-chevron');
+    if (chevron) chevron.style.transform = 'rotate(0deg)';
+}
+
+/* --- Перелистывание стрелочками комикса (+1 вперед, -1 назад) --- */
+function navigateRune(direction) {
+    let newIdx = currentIdx + direction;
+    if (newIdx >= 0 && newIdx < volumeOrder.length) {
+        selectRune(volumeOrder[newIdx]);
+    }
+}
+
+/* --- Открытие/закрытие выпадающего списка рун --- */
+function toggleRuneMenu() {
+    const menu = document.getElementById('kalevala-overlay-menu');
+    if (!menu) return;
+    
+    menu.classList.toggle('open');
+    
+    const chevron = document.querySelector('.dropdown-chevron');
+    if (chevron) {
+        if (menu.classList.contains('open')) {
+            chevron.style.transform = 'rotate(180deg)';
+        } else {
+            chevron.style.transform = 'rotate(0deg)';
+        }
+    }
+}
+
+
+/* ==========================================================================
+   2. ГЛОБАЛЬНЫЕ ИНТЕРФЕЙСНЫЕ ФУНКЦИИ (ДЛЯ ВСЕХ СТРАНИЦ)
+   ========================================================================== */
+
+/* --- Главное бургер-меню сайта --- */
+function toggleMenu() {
+    const menu = document.getElementById('overlay-menu');
+    if (menu) {
+        menu.classList.toggle('open'); 
+    }
+}
+
+/* --- Переключение карточек персонажей --- */
+function showHero(heroId, btn) {
+    const parentSection = btn.closest('section');
+    if (!parentSection) return;
+
+    parentSection.querySelectorAll('.hero-card').forEach(card => card.classList.remove('active'));
+    parentSection.querySelectorAll('.hero-btn').forEach(b => b.classList.remove('active'));
+
+    const target = document.getElementById(heroId);
+    if (target) target.classList.add('active');
+    btn.classList.add('active');
+}
+
+function showSinger(singerId, btn) {
+    document.querySelectorAll('.singer-card').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.singer-btn').forEach(b => b.classList.remove('active'));
+    
+    const target = document.getElementById(singerId);
+    if (target) target.classList.add('active');
+    btn.classList.add('active');
+}
+
+/* --- Переключение исторических маршрутов --- */
+function switchRoute(year, element) {
+    document.querySelectorAll('.route-layer').forEach(r => r.classList.remove('active'));
+    document.querySelectorAll('[class^="date-item"]').forEach(d => d.classList.remove('active'));
+
+    const targetRoute = document.getElementById('route-' + year);
+    if (targetRoute) targetRoute.classList.add('active');
+    if (element) element.classList.add('active');
+}
+
+/* --- Карточки-перевертыши слов --- */
+function toggleWord(card) {
+    card.classList.toggle('flipped');
+}
+
+/* --- Диалоговые баблы --- */
+function toggleKalevalaBubble(target) {
+    if (target === 'vaina') {
+        const b1 = document.getElementById('bubble-vaina-1');
+        const b2 = document.getElementById('bubble-vaina-2');
+        if (b1) b1.classList.toggle('active');
+        if (b2) b2.classList.toggle('active');
+    } else {
+        const b = document.getElementById('bubble-' + target);
+        if (b) b.classList.toggle('active');
+    }
+}
+
+/* --- Музыкальный слайдер (Граммофон) --- */
+let currentSlideIndex = 0;
+function moveSlider(direction) {
+    const viewport = document.getElementById('musicSlider');
+    const slides = document.querySelectorAll('.music-slide');
+    if (!viewport || slides.length === 0) return;
+
+    currentSlideIndex += direction;
+    if (currentSlideIndex >= slides.length) currentSlideIndex = 0;
+    if (currentSlideIndex < 0) currentSlideIndex = slides.length - 1;
+
+    const offset = viewport.clientWidth * currentSlideIndex;
+    viewport.scrollTo({ left: offset, behavior: 'smooth' });
+}
+
+/* --- Интерактивная карта Калевалы --- */
+let currentMapSlideIndex = 0;
+const slideToMapRoute = [4, 2, 3, null, 5, 4, 6];
+
+function changeMapPicture(mapNumber) {
+    if (mapNumber === null) return; 
+    const mapImage = document.getElementById('mainMapImage');
+    if (!mapImage) return;
+
+    mapImage.style.opacity = '0.3'; 
+    setTimeout(() => {
+        mapImage.src = `картинки/карта калевала${mapNumber}.png`;
+        mapImage.style.opacity = '1'; 
+    }, 150);
+}
+
+function selectPlace(slideIndex, mapNumber) {
+    changeMapPicture(mapNumber);
+    currentMapSlideIndex = slideIndex;
+    updateMapSliderPosition();
+}
+
+function moveMapSlider(direction) {
+    const slides = document.querySelectorAll('.map-slide-card');
+    if (slides.length === 0) return;
+
+    currentMapSlideIndex += direction;
+    if (currentMapSlideIndex >= slides.length) currentMapSlideIndex = 0;
+    if (currentMapSlideIndex < 0) currentMapSlideIndex = slides.length - 1;
+
+    const associatedMapNumber = slideToMapRoute[currentMapSlideIndex];
+    changeMapPicture(associatedMapNumber);
+    updateMapSliderPosition();
+}
+
+function updateMapSliderPosition() {
+    const viewport = document.getElementById('mapSlider');
+    const track = viewport ? viewport.querySelector('.map-slider-track') : null;
+    if (!viewport || !track) return;
+
+    const offset = viewport.clientWidth * currentMapSlideIndex;
+    track.style.transform = `translateX(-${offset}px)`;
+}
+
+
+/* ==========================================================================
+   3. ИНИЦИАЛИЗАЦИЯ И СЛУШАТЕЛИ ПРИ ЗАГРУЗКЕ DOM (БЕЗОПАСНЫЕ БЛОКИ)
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Script fully loaded and DOM ready');
+
+    // А) Автоматический запуск первой руны (работает только на странице пересказа)
+    if (document.querySelector('.rune-volume')) {
+        selectRune(volumeOrder[currentIdx]);
+    }
+
+    // Б) Анимация проявления блоков при скролле
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('active');
+                entry.target.classList.add('active', 'visible');
+                revealObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.12 });
 
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    document.querySelectorAll('.reveal, .reveal-on-scroll').forEach(el => revealObserver.observe(el));
 
-
-    /* --- 2. ПАРАЛЛАКС (ТОЛЬКО ДЛЯ ГЛАВНОЙ) --- */
+    // В) Параллакс эффект для Главного экрана (Hero)
     const hero = document.querySelector('.hero');
     if (hero) {
         const bg = document.querySelector('.layer-bg');
@@ -46,163 +266,76 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (el) el.style.transform = `translate(0, 0)`;
             });
         });
-        
         hero.classList.add('loaded');
     }
 
-
-    /* --- 3. КНОПКА "НАВЕРХ" --- */
+    // Г) Кнопка возврата "НАВЕРХ"
     const backToTopBtn = document.getElementById("backToTop");
     if (backToTopBtn) {
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.style.display = "block";
-            } else {
-                backToTopBtn.style.display = "none";
-            }
+            backToTopBtn.style.display = (window.scrollY > 300) ? "block" : "none";
         });
-
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
+
+    // Д) Интерактивные точки на Кантеле
+    const infoBox = document.querySelector('.kantele-info-box');
+    const infoText = document.getElementById('kantele-text');
+    if (infoBox && infoText) {
+        const descriptions = {
+            korpus: "<b>Корпус:</b> Традиционно выдолблен из единого куска дерева — березы, сосны или поющей лесной ели.",
+            deka: "<b>Резонаторное отверстие:</b> Вырезалось в форме сердца, креста <br> или круга. Считалось, что через него «вылетает душа» песни.",
+            otverstie: "<b>Дека:</b> Верхняя часть инструмента. Ей уделялось особое внимание, <br> ведь именно она отражает и усиливает звук рун.",
+            struny: "<b>Струны:</b> В древности изготавливались из конского волоса — об этом сложено немало <br> карельских легенд. Позже их заменили на металлические.",
+            kolki: "<b>Колки:</b> Деревянные элементы для натяжения струн. Каждый колок <br> тщательно вытачивался мастером вручную."
+        };
+
+        infoBox.classList.add('visible');
+
+        document.querySelectorAll('.hotspot').forEach(spot => {
+            spot.addEventListener('click', function() {
+                const infoKey = this.getAttribute('data-info');
+                infoBox.classList.remove('visible');
+                setTimeout(() => {
+                    if (descriptions[infoKey]) {
+                        infoText.innerHTML = descriptions[infoKey];
+                    }
+                    infoBox.classList.add('visible');
+                }, 200); 
+            });
+        });
+    }
+
+    // Е) Слайдер исполнителей рун (карточки)
+    const musicCards = document.querySelectorAll(".music-card");
+    const prevBtn = document.querySelector(".slider-btn.prev");
+    const nextBtn = document.querySelector(".slider-btn.next");
+    
+    if (musicCards.length > 0 && prevBtn && nextBtn) {
+        let currentCardIndex = 0;
+        function changeCard(newIndex) {
+            musicCards[currentCardIndex].classList.remove("active");
+            if (newIndex >= musicCards.length) currentCardIndex = 0;
+            else if (newIndex < 0) currentCardIndex = musicCards.length - 1;
+            else currentCardIndex = newIndex;
+            musicCards[currentCardIndex].classList.add("active");
+        }
+        nextBtn.addEventListener("click", () => changeCard(currentCardIndex + 1));
+        prevBtn.addEventListener("click", () => changeCard(currentCardIndex - 1));
+    }
+
+    // Ж) Звуковой эффект шуршания винила при ховере
+    const musicCardSingle = document.querySelector('.music-card');
+    if (musicCardSingle) {
+        const audio = new Audio('звуки/vinyl_scratch.mp3');
+        musicCardSingle.addEventListener('mouseenter', () => {
+            audio.currentTime = 0;
+            audio.play().catch(() => console.log("Интеракция со звуком заблокирована браузером до первого клика."));
+        });
+        musicCardSingle.addEventListener('mouseleave', () => {
+            audio.pause();
+        });
+    }
 });
-
-
-/* --- 4. МЕНЮ (BURGER) --- */
-function toggleMenu() {
-    const menu = document.getElementById('overlay-menu');
-    if (menu) {
-        menu.classList.toggle('open'); 
-    }
-}
-
-
-/* --- 5. СЛАЙДЕР (МУЗЫКАЛЬНЫЙ ГРАММОФОН) --- */
-let currentSlideIndex = 0;
-
-function moveSlider(direction) {
-    const viewport = document.getElementById('musicSlider');
-    const slides = document.querySelectorAll('.music-slide');
-    
-    if (!viewport || slides.length === 0) return;
-
-    currentSlideIndex += direction;
-
-    if (currentSlideIndex >= slides.length) currentSlideIndex = 0;
-    if (currentSlideIndex < 0) currentSlideIndex = slides.length - 1;
-
-    const offset = viewport.clientWidth * currentSlideIndex;
-    
-    viewport.scrollTo({
-        left: offset,
-        behavior: 'smooth'
-    });
-}
-
-
-/* --- 6. ПЕРЕКЛЮЧЕНИЕ ПЕРСОНАЖЕЙ / КАРТОЧЕК --- */
-function showHero(heroId, btn) {
-    const parentSection = btn.closest('section');
-    if (!parentSection) return;
-
-    parentSection.querySelectorAll('.hero-card').forEach(card => card.classList.remove('active'));
-    parentSection.querySelectorAll('.hero-btn').forEach(b => b.classList.remove('active'));
-
-    const target = document.getElementById(heroId);
-    if (target) target.classList.add('active');
-    btn.classList.add('active');
-}
-
-function showSinger(singerId, btn) {
-    document.querySelectorAll('.singer-card').forEach(c => c.classList.remove('active'));
-    document.querySelectorAll('.singer-btn').forEach(b => b.classList.remove('active'));
-    
-    const target = document.getElementById(singerId);
-    if (target) target.classList.add('active');
-    btn.classList.add('active');
-}
-
-
-/* --- 7. КАРТЫ И МАРШРУТЫ (СТАРЫЕ) --- */
-function switchRoute(year, element) {
-    document.querySelectorAll('.route-layer').forEach(r => r.classList.remove('active'));
-    document.querySelectorAll('[class^="date-item"]').forEach(d => d.classList.remove('active'));
-
-    const targetRoute = document.getElementById('route-' + year);
-    if (targetRoute) targetRoute.classList.add('active');
-    if (element) element.classList.add('active');
-}
-
-function toggleWord(card) {
-    card.classList.toggle('flipped');
-}
-
-function toggleKalevalaBubble(target) {
-    if (target === 'vaina') {
-        document.getElementById('bubble-vaina-1').classList.toggle('active');
-        document.getElementById('bubble-vaina-2').classList.toggle('active');
-    } else if (target === 'izba') {
-        document.getElementById('bubble-izba').classList.toggle('active');
-    } else if (target === 'sampo') {
-        document.getElementById('bubble-sampo').classList.toggle('active');
-    }
-}
-
-
-/* --- 8. ИНТЕРАКТИВНАЯ КАРТА КАЛЕВАЛЫ И СЛАЙДЕР СИНХРОНИЗАЦИЯ (ФИНАЛ) --- */
-let currentMapSlideIndex = 0;
-
-// Массив соответствия: Индекс слайда внизу -> Номер картинки карты сверху
-const slideToMapRoute = [4, 2, 3, null, 5];
-
-// Вспомогательная функция для плавной смены картинки карты
-function changeMapPicture(mapNumber) {
-    if (mapNumber === null) return; // Если у Сампо null, карту не трогаем
-    
-    const mapImage = document.getElementById('mainMapImage');
-    if (!mapImage) return;
-
-    mapImage.style.opacity = '0.3'; // Плавное гашение
-    
-    setTimeout(() => {
-        mapImage.src = `картинки/карта калевала${mapNumber}.png`;
-        mapImage.style.opacity = '1'; // Плавное появление
-    }, 150);
-}
-
-// Вызывается при клике на ХОТСПОРТЫ (метки) на карте
-function selectPlace(slideIndex, mapNumber) {
-    changeMapPicture(mapNumber);
-    currentMapSlideIndex = slideIndex;
-    updateMapSliderPosition();
-}
-
-// Вызывается при клике на СТРЕЛКИ слайдера карты
-function moveMapSlider(direction) {
-    const slides = document.querySelectorAll('.map-slide-card');
-    if (slides.length === 0) return;
-
-    currentMapSlideIndex += direction;
-
-    // Циклический скролл границ слайдера карты
-    if (currentMapSlideIndex >= slides.length) currentMapSlideIndex = 0;
-    if (currentMapSlideIndex < 0) currentMapSlideIndex = slides.length - 1;
-
-    // Автоматически находим нужную карту для этого слайда и переключаем ее
-    const associatedMapNumber = slideToMapRoute[currentMapSlideIndex];
-    changeMapPicture(associatedMapNumber);
-
-    updateMapSliderPosition();
-}
-
-// Функция сдвига ленты слайдера карты через CSS transform
-function updateMapSliderPosition() {
-    const viewport = document.getElementById('mapSlider');
-    const track = viewport ? viewport.querySelector('.map-slider-track') : null;
-    
-    if (!viewport || !track) return;
-
-    const offset = viewport.clientWidth * currentMapSlideIndex;
-    track.style.transform = `translateX(-${offset}px)`;
-}

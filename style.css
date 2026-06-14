@@ -109,17 +109,17 @@
 }
 
 .hotspot-izba {
-    bottom: 22%;
+    bottom: 32%;
     left: 56%;
     width: 15%;
     height: 25%;
 }
 
-.hotspot-sampo {
-    top: 15%;
-    right: 5%;
-    width: 18%;
-    height: 35%;
+.hotspot-sampo1 {
+    top: 12%;
+    left: 75%;
+    width: 15%;
+    height: 25%;
 }
 
 /* Общие стили для бабблов */
@@ -236,7 +236,7 @@
     font-family: 'WildRune';
     
    
-    color: #1a1a1a;
+    color: #111;
 }
 
 /* --- СТИЛИ ДЛЯ КОНТЕНТА БАННЕРА (Заголовок и Логотип) --- */
@@ -260,7 +260,22 @@
 
 
 
+.choblya7, .choblya8 {
+      position: absolute;   /* Фиксируем их на экране */
+   
+    z-index: -1;       /* Уводим под основной контент */
+    pointer-events: none; /* Пропускают клики сквозь себя */
+    width: 150px;      /* Настрой ширину под себя */
+    
+}
 
+.choblya7 {
+     left: -50px;
+}
+
+.choblya8 {
+right: -50px;
+}
 
 /* Общие стили для обеих картинок */
 .choblya1, .choblya2 {
@@ -277,7 +292,7 @@
 }
 
 .choblya2 {
-    right: -50px;      /* Немного торчит справа */
+     right: -50px;     /* Немного торчит справа */
 }
 
 
@@ -292,7 +307,7 @@
 /* Стили заголовка с маркером */
 .meaning-title {
     font-family: 'WildRune', sans-serif;
-    font-size: 2rem;
+    font-size: 3rem;
     margin: 40px 0;
     letter-spacing: 1px;
     justify-self: center;
@@ -420,7 +435,7 @@
 
 .footer-links a {
     text-decoration: none;
-    color: #1a1a1a;
+    color: #111;
     font-family: 'UraBumBum', serif;
     font-size: 40px;
     /* Убираем лишний дефис и меняем ms на s (или пишем 300ms) */
@@ -661,22 +676,22 @@
 
 /* Легенда */
 .map-legend {
-    width: 320px;
-    background-image src: 'картинки/легенда рамка.png';
+    width: 590px;
+    
     padding: 20px;
 }
 
 .date-item, .date-item1, .date-item2, .date-item3 {
     cursor: pointer;
     padding: 10px;
-    transition: 0.5s;
-    font-size: 27px;
+    transition: all 0.35s ease-in-out;
+    font-size: 1.6rem;
 }
 
 .date-item h3, .date-item1 h3, .date-item2 h3, .date-item3 h3 {
     margin: 0;
     font-family: 'UraBumBum', serif;
-    font-size: 32px;
+    font-size: 2rem;
     
 }
 
@@ -700,7 +715,8 @@
 
 .date-item.active, .date-item1.active, .date-item2.active, .date-item3.active {
     background: rgba(105, 225, 231, 0.2);
-    font-size: 40px;
+    font-size: 2.2rem;
+    padding: 25px 0;   /* Если увеличиваешь отступы */
 }
 
 .date-item:hover, .date-item1:hover, .date-item2:hover, .date-item3:hover  {
@@ -775,7 +791,7 @@
 .main-title {
     font-family: 'WildRune', serif;
     font-size: 3rem;
-    color: #1a1a1a;
+    color: #111;
     text-align: center;
     margin-bottom: 10px;
     margin-top: 0;
@@ -810,9 +826,14 @@
 }
 
 .legend-box {
+    height: 550px; /* Поставь тут ту же высоту в px, что и у твоей карты */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Распределит блоки равномерно */
     
-    padding: 20px;
-    width: 300px; /* Фиксированная ширина как на макете */
+    /* Если вдруг контент превысит высоту, страница не поедет, 
+       а внутри блока появится аккуратный скролл */
+    overflow-y: auto;
 }
 
 .legend-item {
@@ -896,7 +917,7 @@
 }
 
 .bio-img, .stone-img {
-    border: 1px solid #1a1a1a;
+    border: 1px solid #000000;
     max-height: 300px;
     width: auto;
 }
@@ -953,7 +974,7 @@ body {
 
 .bio-title {
     font-family: 'WildRune', serif;
-    color: #333;
+    color: #000000;
     margin-bottom: 30px;
 }
 
@@ -1052,7 +1073,7 @@ display: block;
 .hero-title {
     margin-top: -90px;
     z-index: 10;
-    color: #1a1a1a;
+    color: #111;
     margin-bottom: 0;
 }
 
@@ -1120,7 +1141,7 @@ display: block;
     font-size: 40px;
     text-decoration: none;
     
-    color: #333;
+    color: #111;
     margin: 15px 0;
     transition: 0.3s;
 }
@@ -1179,10 +1200,7 @@ display: block;
 /* Контейнер всей страницы */
 
 /* 3. ШАПКА И МЕНЮ */
-header {
-    position: relative;
-    width: 100%;
-}
+
 
 .chtoeto {
     width: 100%;
@@ -1200,10 +1218,7 @@ header {
 }
 
 
-.rune-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
+
 
 .rune-title {
     display: inline-flex;
@@ -1213,108 +1228,365 @@ header {
 }
 
 .rune-title h1 {
-    font-size: 32px;
+    font-size: 2rem;
     letter-spacing: 5px;
     margin: 0;
     border-bottom: 2px solid var(--accent-blue);
     font-family: 'WildRune';
 }
 
-/* Сетки для картинок и текста */
-.grid-layout {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    gap: 30px;
-    margin: 40px 0;
+/* Базовые переменные (если у тебя они объявлены в :root, этот блок можно пропустить) */
+.rune-title-container {
+    display: inline-flex;
     align-items: center;
-    font-size: 32px;
+    gap: 20px;
 }
 
-.text-box {
-    padding: 20px;
-   font-size: 32px;
-    border-radius: 2px;
+.rune-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: opacity 0.2s;
 }
 
-.central-text {
+.rune-dropdown-trigger:hover {
+    opacity: 0.8;
+}
+
+.dropdown-chevron {
+    font-size: 14px;
+    color: var(--accent-blue);
+    transition: transform 0.3s;
+}
+
+/* 1. РОДИТЕЛЬСКИЙ КОНТЕЙНЕР (Обязательно добавляем точку отсчета) */
+.rune-header {
+    position: relative; /* Чтобы выпадающее меню отталкивалось именно от шапки, а не от верха сайта */
     text-align: center;
-    font-size: 32px;
-    max-width: 600px;
-    margin: 40px auto;
-   
+    margin-bottom: 40px;
+    z-index: 999;    
+    font-size: 1.8rem;   /* Приподнимаем всю шапку над контентом страницы */
 }
 
-.item img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+/* 2. ИСПРАВЛЕННЫЙ БЛОК НАВИГАЦИИ */
+.navigationnn-overlay {
+    opacity: 0;
+    visibility: hidden;
+    
+    position: absolute;
+    top: 100%;         /* Встанет ровно под заголовком */
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    
+    /* --- КРИТИЧЕСКИЕ ИСПРАВЛЕНИЯ ТУТ --- */
+    background-color: #ffffff !important; /* !!! Задаем сплошной белый фон, чтобы перекрыть нижний контент */
+    z-index: 10000 !important;            /* !!! Огромный z-index, чтобы быть строго ПОВЕРХ любых картинок */
+    
+    /* Элементы декора, чтобы меню выглядело аккуратной парящей карточкой */
+                       /* Скругление углов */
+    
+    padding: 30px;
+    width: 220px;
+    text-align: left;
+    
+    /* Плавное проявление */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
 }
 
-/* Специфические секции (Сотворение и Рождение) */
-.creation-section {
+/* 3. СОСТОЯНИЕ КОГДА МЕНЮ ОТКРЫТО */
+.navigationnn-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(15px); /* Смещаем чуть вниз, делая красивый зазор */
+}
+
+/* --- Дальше идут твои стили без изменений --- */
+
+.menu-content h2 {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--accent-blue);
+    padding-bottom: 5px;
+}
+
+.menu-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-content li {
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.menu-content li a {
+    text-decoration: none;
+    color: #111;
+    transition: color 0.2s;
+}
+
+.menu-content li a span {
+    color: var(--accent-blue);
+    font-weight: bold;
+}
+
+.menu-content li.active a {
+    font-weight: bold;
+    color: var(--accent-blue);
+}
+
+/* Прячем неактивные тома рун */
+.rune-volume.hidden {
+    display: none !important;
+}
+
+/* Оформление активного пункта в выпадающем меню */
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Жестко задаем размер */
+    width: 220px;         /* Попробуй сделать чуть больше 150px, чтобы длинный текст красиво влезал */
+    min-width: 220px;     /* ЖЕСТКАЯ ДИРЕКТИВА: запрещаем делать плашку меньше этого размера */
+    
+    /* ГЛАВНОЕ ИСПРАВЛЕНИЕ: запрещаем Flexbox сжимать этот элемент */
+    flex-shrink: 0;       
+    
+    /* Внутренние отступы, чтобы плашка была крупной и объемной */
+    padding: 12px 20px;   
+    box-sizing: border-box; /* Чтобы отступы не ломали общую ширину */
+    
+    /* Чтобы текст не переносился уродливо по одной букве */
+    white-space: nowrap;  
+    
+    /* Твой дизайн (примерный) */
+    background-color: #A5D6FA; 
+    border-radius: 6px;
+    margin: 5px 0;
+}
+
+
+.kalevala-overlay-menu {
+    /* Меню должно летать ПОВЕРХ страницы, а не расталкивать картинки */
+    position: absolute;   
+    z-index: 9999;        /* Максимальный приоритет видимости */
+    
+    /* Выравниваем по центру под заголовком */
+    top: 80px;            /* Подкрути этот параметр под высоту своей шапки */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* Оформление самого выпадающего окна */
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    
+    
+    /* Выстраиваем элементы строго друг под другом */
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 50px 0;
+    gap: 10px;            /* Расстояние между плашками */
+
 }
 
-.floating-text {
-    align-self: flex-start;
+
+.menu-item:hover {
+    background: #DBEDFF;
+    transition: all 0.3s ease;
+}
+
+.menu-item.active {
+    font-weight: bold;
+    color: var(--accent-blue);
+    background: #DBEDFF;
+}
+
+/* Стили для позиционирования оглавления относительно шапки */
+.rune-header {
+    position: relative; /* Чтобы меню открывалось ровно под заголовком */
+}
+
+/* ==========================================================================
+   4. СТИЛИ ДЛЯ КАРТОЧЕК И ТЕКСТА (КАЛЕВАЛА)
+   ========================================================================== */
+
+.kalevala-page {
+    position: relative;
+    padding: 60px 40px;
+    max-width: 1400px;
+    margin: 0 auto; /* Идеальное центрирование всей страницы на больших мониторах */
+}
+
+
+
+.rune-title {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    color: var(--accent-blue);
+}
+
+.rune-title h1 {
     font-size: 32px;
-    max-width: 300px;
-    margin-top: -40px;
-    margin-left: 10%;
-    border-left: 2px solid var(--accent-blue);
-    padding-left: 15px;
+    letter-spacing: 5px;
+    margin: 0;
+    border-bottom: 2px solid var(--accent-blue);
+    font-family: 'WildRune', sans-serif;
 }
 
-.birth-section {
+.arrow-nav {
+    font-size: 32px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* --------------------------------------------------------------------------
+   ГЛАВНАЯ МАГИЯ ВЫРАВНИВАНИЯ: Новая модульная система "кадров" комикса
+   -------------------------------------------------------------------------- */
+
+/* УНИВЕРСАЛЬНЫЙ БЛОК ДЛЯ ТЕКСТА И КАРТИНЫ ПО ЦЕНТРУ (Гнездо, Яйца, Финал) */
+.comic-center-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирует внутренние элементы по горизонтали */
+    justify-content: center;
+    margin: 60px auto;
+    max-width: 800px; /* Ограничиваем ширину текста, чтобы он не расползался */
+    text-align: center;
+}
+
+.central-text {
+    font-size: 32px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+/* ДВУХКОЛОНОЧНЫЙ РЯД (Текст + Картинка или мини-сетка) */
+.comic-row {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: 1fr 1.2fr; /* Сбалансированные пропорции колонок */
+    gap: 50px;
+    align-items: center; /* Центрирует текст и картинку по вертикали относительно друг друга */
+    margin: 80px 0;
+}
+
+/* Модификатор REVERSE — зеркально меняет колонки местами (Картинка слева, Текст справа) */
+.comic-row.reverse {
+    direction: rtl; /* Разворачивает сетку справа налево */
+}
+
+.comic-row.reverse .text-box,
+.comic-row.reverse .comic-sub-grid {
+    direction: ltr; /* Возвращает нормальное чтение текста слева направо */
+}
+
+/* Контейнеры для текста */
+.text-box {
+    font-size: 32px;
+    line-height: 1.5;
+    padding: 20px 0;
+}
+
+/* ВНУТРЕННИЕ СЕТКИ ДЛЯ ИЛЛЮСТРАЦИЙ (Комиксные панели) */
+.comic-sub-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
-    margin-top: 50px;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
 }
 
-.character-img {
-    grid-column: 2;
-    justify-self: end;
+/* Подпись под мелкими кадрами */
+.sub-caption {
+    grid-column: span 2; /* Растягиваем подпись на обе колонки */
+    font-size: 24px;
+    text-align: center;
+    margin-top: 10px;
+    line-height: 1.4;
 }
 
-/* 5. ГЛАВНАЯ МАГИЯ: АНИМАЦИЯ ПРИ СКРОЛЛЕ */
+/* Вариант сетки, где картинки идут горизонтально в ряд, а не плиткой */
+.comic-sub-grid.row-layout {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
 
-/* Состояние ДО (убедись, что нет конфликтов) */
+/* --------------------------------------------------------------------------
+   УЛЬТИМАТИВНЫЙ КОНТРОЛЬ КАРТИНОК (Чтобы ничего никуда не уползало)
+   -------------------------------------------------------------------------- */
+
+.kalevala-page img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto; /* Страховочное центрирование внутри любых контейнеров */
+}
+
+/* Специфические размеры для разных типов иллюстраций */
+.comic-img {
+    max-width: 500px; /* Ограничение для средних картинок (например, яйца) */
+}
+
+.comic-img-large {
+    max-width: 850px; /* Для больших эпических иллюстраций */
+}
+
+.ornament {
+    max-width: 200px;
+    margin: 80px auto 20px auto !important;
+}
+
+/* ==========================================================================
+   5. ГЛАВНАЯ МАГИЯ: АНИМАЦИЯ ПРИ СКРОЛЛЕ
+   ========================================================================== */
+
 .reveal {
     opacity: 0 !important;
-    transform: translateY(50px) !important;
-    transition: all 0.8s ease-out !important;
-    visibility: visible !important; /* На всякий случай */
+    transform: translateY(40px) !important;
+    transition: all 0.9s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    visibility: visible !important;
 }
 
-/* Состояние ПОСЛЕ */
 .reveal.active {
     opacity: 1 !important;
     transform: translateY(0) !important;
 }
-/* Задержки, чтобы элементы в сетке вылетали по очереди */
-.grid-layout .item:nth-child(even) {
-    transition-delay: 0.2s;
+
+/* ==========================================================================
+   АДАПТИВ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ
+   ========================================================================== */
+@media (max-width: 992px) {
+    .comic-row, 
+    .comic-row.reverse {
+        grid-template-columns: 1fr; /* На планшетах и телефонах всё выстраивается в один аккуратный столбец */
+        gap: 30px;
+        margin: 50px 0;
+        direction: ltr !important; /* Отключаем реверс на мобилках */
+    }
+    
+    .comic-sub-grid.row-layout {
+        flex-direction: column;
+    }
+    
+    .text-box, .central-text {
+        font-size: 26px; /* Чуть уменьшаем гигантский шрифт на мобильных экранах */
+        text-align: center;
+    }
+    
+    .sub-caption {
+        font-size: 20px;
+    }
 }
-
-/* Адаптив для телефонов */
-@media (max-width: 768px) {
-    .grid-layout, .birth-section {
-        grid-template-columns: 1fr;
-    }
-    .summary-container {
-        padding: 20px;
-    }
-    .floating-text {
-        margin-left: 0;
-        margin-top: 20px;
-    }
-}
-
-
 
 
 
@@ -1351,7 +1623,7 @@ header {
 
 .meaning-title-mini {
     font-family: 'UraBumBum', sans-serif;
-    font-size: 2.5rem;
+    font-size: 3rem;
     text-align: center;
     margin-bottom: 50px;
    
@@ -1362,9 +1634,18 @@ header {
 /* СИНИЙ БЛОК */
 .blue-block-wrap {
     position: relative;
+    margin-top: 590px;
     margin-bottom: 10px;
      background-image: 'картинки/фончик для плашек.png';
 }
+
+.blue-block-wrapik {
+    position: relative;
+    margin-top: 90px;
+    margin-bottom: 10px;
+     background-image: 'картинки/фончик для плашек.png';
+}
+
 
 .blue-bg-box {
     position: relative; /* Оставляем для позиционирования "чобль" */
@@ -1390,6 +1671,7 @@ header {
     font-size: 32px;
     margin: 0;
     margin-top: 500px;
+    text-align: center;
 }
 
 
@@ -1490,13 +1772,47 @@ header {
     background-repeat: no-repeat;
 }
 
-.hero-image img {
-    width: 450px;
-    height: 550px;
-    object-fit: contain;
-    margin: 20px;
+/* 1. Делаем контейнер картинки относительным, чтобы цветная копия встала ровно поверх чб */
+.hero-image {
+    position: relative;
+    width: 100%; /* Или твоя фиксированная ширина, если она настроена в сетке hero-grid */
+left: -150px
 }
 
+/* Общие свойства для обеих картинок персонажа */
+.hero-image img {
+    display: block;
+    
+    width: 170%;
+}
+
+/* 2. Цветная картинка (img-overlay) накладывается сверху и изначально прозрачна */
+.hero-image .img-overlay {
+    position: absolute;
+    top: 0;
+    
+    opacity: 0;
+    
+    /* Скорость «оживления» персонажа цветом (0.5 секунды) */
+    transition: opacity 0.3s ease-in-out; 
+    pointer-events: none; /* Чтобы мышка не спотыкалась о верхний слой */
+}
+
+/* 3. МАГИЯ ХОВЕРА (выбери один из двух вариантов ниже) */
+
+/* ВАРИАНТ А: Картинка становится цветной, когда мы наводим мышку на ВСЮ карточку героя */
+/* Это удобнее для пользователя: читаешь текст, навел на карточку — Вяйнямёйнен ожил */
+.hero-card:hover .img-overlay {
+    opacity: 1;
+}
+
+/* ВАРИАНТ Б: Если нужно, чтобы цвет появлялся строго при наведении только НА САМУ КАРТИНКУ */
+/* Если хочешь этот вариант, просто сотри Вариант А и раскомментируй код ниже: */
+/*
+.hero-image:hover .img-overlay {
+    opacity: 1;
+}
+*/
 .hero-info {
     text-align: left;
     color: #fff;
@@ -1504,7 +1820,7 @@ header {
 
 .hero-info h3 {
     font-family: 'WildRune', serif;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     margin-bottom: 20px;
 }
 
@@ -1612,7 +1928,7 @@ header {
     font-family: 'UraBumBum', sans-serif;
     line-height: 1.7;
     font-size: 32px;
-    color: #000;
+    color: #111;
 }
 
 .scholar-quote {
@@ -1645,6 +1961,25 @@ header {
     cursor: pointer;
     position: relative;
     
+}
+
+/* Предположим, твой внешний контейнер карточки называется .vocabulary-card */
+.word-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Чтобы курсор менялся на пальчик */
+}
+
+/* Эффект при наведении: карточка увеличивается на 3% и чуть приподнимается */
+.word-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    /* Если у карточек есть тень, можно сделать её чуть глубже при наведении: */
+   
+}
+
+/* Важно! Если карточка УЖЕ ПЕРЕВЕРНУТА (ей со стороны JS присвоен класс, например, .is-flipped), 
+   нам нужно сохранить переворот по оси Y, но оставить эффект приподнимания */
+.word-card.flipped:hover {
+    transform: translateY(-5px) scale(1.03);
 }
 
 .word-front, .word-back {
@@ -1709,6 +2044,56 @@ header {
     padding: 0 20px;
 }
 
+.kantele-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  top: 80px;
+}
+
+.kantele-pic {
+  width: 100%;
+  display: block;
+}
+
+/* Стили самой точки */
+.hotspot {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-image: url('картинки/бипка.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 2;
+}
+
+.hotspot:hover {
+  transform: scale(1.3);
+}
+
+/* Блок для текста описания */
+.kantele-info-box {
+  margin-top: 20px;
+  margin-bottom: 390px;
+  height: 80px;
+  text-align: center;
+  font-family: inherit;
+  font-size: 2rem;
+  color: #111;
+ opacity: 0;
+  transform: translateY(10px); /* Текст будет слегка приподниматься при появлении */
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Класс, который делает текст видимым */
+.kantele-info-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Вводная сетка */
 .runo-intro-grid {
     display: flex;
@@ -1725,7 +2110,7 @@ header {
 .runo-intro-text h3 {
     font-family: 'WildRune', serif;
     font-size: 2rem;
-    color: #000;
+    color: #111;
     margin-bottom: 20px;
 }
 
@@ -1733,13 +2118,31 @@ header {
     font-family: 'UraBumBum', sans-serif;
     font-size: 32px;
     line-height: 1.7;
-    color: #000;
+    color: #111;
     margin-bottom: 15px;
 }
 
 .runo-intro-visual {
     flex: 0.8;
+    width: 450px;
+    height: auto;
+    position: relative;
+display: block;
+    transition: transform 0.4s ease, filter 0.4s ease;
 }
+.runo-intro-visual img {
+     transition: filter 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+}
+
+.runo-intro-visual:hover {
+    transform: scale(1.05) ; /* Легкое увеличение */
+   
+}
+
+.runo-intro-visual:hover img {
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
 
 .engraving-style-img {
     width: 120%;
@@ -1779,8 +2182,8 @@ header {
 .sub-section-title {
     font-family: 'WildRune', serif;
     font-size: 2.2rem;
-    color: #000;
-    margin-top: 80px;
+    color: #111;
+    margin-top: 250px;
     margin-bottom: 10px;
 }
 
@@ -1837,6 +2240,16 @@ header {
 
 .singer-img-wrap {
     flex: 0.7;
+    height: auto;
+    position: relative;
+display: block;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+
+.singer-img-wrap:hover {
+    transform: scale(1.05) ; /* Легкое увеличение */
+   
 }
 
 .portrait-img {
@@ -1854,7 +2267,7 @@ header {
 .singer-bio h4 {
     font-family: 'UraBumBum', serif;
     font-size: 2.2rem;
-    color: #000;
+    color: #111;
     margin: 0 0 5px 0;
 }
 
@@ -1870,7 +2283,7 @@ header {
     font-family: 'UraBumBum', sans-serif;
     font-size: 32px;
     line-height: 1.6;
-    color: #000;
+    color: #111;
 }
 
 /* Стилизация вырезки из дневника */
@@ -1882,7 +2295,7 @@ header {
     font-style: italic;
     font-size: 24px;
     line-height: 1.5;
-    color: #000;
+    color: #111;
 }
 
 /* Анимация переключения табов */
@@ -1909,84 +2322,729 @@ header {
 
 
 /* для 5 */
-
-
-.music-section {
-    max-width: 1200px;
-    margin: 100px auto;
-    text-align: center;
-    position: relative;
+/* Базовые настройки секции */
+.literature-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 20px;
 }
 
-.music-description {
-    max-width: 600px;
-    margin: 20px auto 40px;
-    font-family: 'UraBumBum', sans-serif;
-    font-size: 1.1rem;
+.literature-section.visible {
+    opacity: 1;
+    transform: translateY(0);}
+
+
+/* Контейнер для левитирующих элементов */
+.lit-intro-container {
+    position: relative;
+    height: 350px; /* Высота зоны парения */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+
+/* Правая колонка с текстом */
+.lit-intro-text {
+   margin-left: 700px;
+    width: 1000px;                   /* Занимает ровно половину ширины ряда */
+    font-size: 2rem;          /* Подкрути размер под свои шрифты */
+    line-height: 1.6;
+    color: #111;                /* Твой фирменный цвет текста */
+}
+
+.floating-item {
+    position: absolute;
+    will-change: transform; /* Оптимизация производительности анимации */
+  
+}
+
+/* Настраиваем независимую левитацию */
+.lit-book {
+    animation: floatBook 6s ease-in-out infinite;
+    z-index: 2;
+    left: 10px;
+    top: 30px;
+}
+
+.lit-feather {
+    animation: floatFeather 5s ease-in-out infinite;
+    z-index: 3;
+    /* Исходное смещение пера относительно центра (подкрути под свой макет) */
+    margin-left: -300px;
+    margin-top: 0px; 
+}
+
+.lit-inkwell {
+    animation: floatInkwell 7s ease-in-out infinite;
+    z-index: 3;
+    /* Исходное смещение чернильницы */
+    margin-left: -290px;
+    margin-top: 400px;
+}
+
+/* Траектории парения */
+@keyframes floatBook {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(1deg); }
+}
+
+@keyframes floatFeather {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(-4deg) translateX(3px); }
+}
+
+@keyframes floatInkwell {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px) translateX(-2px); }
+}
+
+/* Верстка книг в зигзаг */
+.book-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    margin-bottom: 100px;
+    margin-top: 300px;
+}
+
+.book-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.book-text {
+    flex: 1;
+    font-size: 2rem;
+}
+
+.book-text h2 {
+    flex: 1;
+    font-family: "WildRune";
+    font-size: 2.1rem;
+}
+
+.book-row:hover .book-image img {
+    filter: grayscale(0%) contrast(100%);
+    transform: scale(1.04); /* Слегка увеличиваем обложку для интерактивности */
+}
+
+.book-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.book-image img {
+    max-width: 350px;
+    height: auto;
+    /* Твоя мягкая тень, чтобы обложки выглядели объемно, если она была настроена */
+    
+    /* Добавляем фирменный стиль: ЧБ по умолчанию */
+    filter: grayscale(100%) contrast(104%); 
+    
+    /* Задаем плавность анимации в обе стороны */
+    transition: filter 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+ 
+/* --- СТИЛИ ДЛЯ СЕКЦИИ МУЗЫКИ --- */
+.music-lead, .music-footer-text {
+    text-align: left;
+    font-size: 2rem;
+    padding-left: 230px;
+    width: 1000px;
+}
+
+
+/* Общие стили секции с учетом карманов для стрелок */
+.music-section {
+    max-width: 1000px;  /* Комфортная ширина для больших экранов */
+    margin-left: auto;   /* Центрируем секцию на странице */
+    margin-right: auto;  /* Центрируем секцию на странице */
+    width: 100%;        
+    padding: 60px 80px;  /* Боковые карманы (отступы) для стрелочек */
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Контейнер-якорь для позиционирования стрелок */
+.music-container-relative {
+    position: relative;
+    width: 100%;
+}
+
+
+/* Контейнер картинок (делаем относительным, overflow НЕ включаем) */
+.music-img-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Сама квадратная обложка (выносим на передний план) */
+.music-img-container .album-cover {
+    position: relative;
+    z-index: 5; /* Гарантирует, что обложка перекроет диск */
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+   
+}
+
+/* Виниловый диск (прячется сзади) */
+/* Виниловый диск (прячется сзади) */
+.music-img-container .album-disc {
+    position: absolute;
+    top: 3%;     
+    left: 3%;
+    width: 94%;  
+    height: 94%;
+    object-fit: contain;
+    border-radius: 50%;
+    z-index: -1;  
+    
+    /* ИСПРАВЛЕНО: Увеличили время до 0.8с и сделали скольжение благородным и линейно-плавным */
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); 
+    transform: translateX(0) rotate(0deg);
+}
+
+/* ЭФФЕКТ ХОВЕРА: Диск выезжает аккуратно и интеллигентно */
+.music-card:hover .album-disc {
+    /* ИСПРАВЛЕНО: 
+       Снизили вылет с 45% до 30% (он выкатится совсем чуть-чуть).
+       Снизили поворот со 180 градусов до 70 градусов (мягкий, едва заметный доворот). */
+    transform: translateX(30%) rotate(70deg);
+}
+
+
+
+/* Сетка контента — выравниваем всё строго по центру */
+.music-grid-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Собирает слайдер и граммофон вместе по центру */
+    gap: 60px;               /* Расстояние между колонками */
+    width: 100%;
+}
+/* Полное тотальное уничтожение браузерных рамок, фонов и теней у кнопок */
+.music-container-relative button,
+.music-container-relative .slider-btn,
+button.prev,
+button.next {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: 0 !important;
+    border-style: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-appearance: none !important; /* Сброс для Safari/Chrome */
+    -moz-appearance: none !important;    /* Сброс для Firefox */
+}
+/* Полностью очищаем кнопки от серых рамок, фонов и фиксируем по центру высоты */
+.music-container-relative .slider-btn {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    cursor: pointer !important;
+    z-index: 100 !important;
+}
+
+/* Выносим левую стрелку в левый карман за пределы контента */
+.music-container-relative .prev {
+    left: -50px !important; 
+}
+
+/* Выносим правую стрелку в правый карман за пределы контента */
+.music-container-relative .next {
+    right: -50px !important;
+}
+
+/* Задаем размер самим картинкам внутри кнопок */
+.music-container-relative .slider-btn img {
+    width: 35px !important; /* Можешь сделать чуть больше или меньше */
+    height: auto !important;
+    display: block !important;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Эффект при наведении */
+.music-container-relative .slider-btn:hover img {
+    opacity: 1;
+}
+.music-container-relative .prev:hover img {
+    transform: scale(1.1) translateX(-2px); /* Слегка подталкивается влево */
+}
+.music-container-relative .next:hover img {
+    transform: scale(1.1) translateX(2px);  /* Слегка подталкивается вправо */
+}
+
+
+
+
+/* Стили левой колонки слайдера (СОГЛАСОВАНЫ РАЗМЕРЫ) */
+.music-slider-wrapper {
+    flex: 0 0 850px; /* Фиксированная ширина колонки слайдера */
+    width: 850px;
+}
+
+.music-card {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Размер текста в карточке */
+.music-card h3 {
+    font-size: 2rem;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.artist-descr {
+    font-size: 1.8rem;
     line-height: 1.5;
+    max-height: 100px;
+}
+
+/* Картинка внутри слайдера теперь адаптивна под размер колонки */
+.music-img-container img {
+    width: 60%;
+    height: auto;
+    display: block;
+    
+}
+
+.music-card.active {
+    display: flex;
+    animation: fadeInMusic 1s ease;
+}
+
+@keyframes fadeInMusic {
+    from { opacity: 0; transform: translateX(5%); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* --- ПРАВАЯ КОЛОНКА: СБОРКА И АНИМАЦИЯ ГРАММОФОНА --- */
+.gramophone-container {
+    flex: ;
+    display: flex;
+    justify-content: center;
+    margin-top: -250px;
+    align-items: center;
+}
+
+/* Оболочка, внутри которой слои накладываются друг на друга */
+.gramophone-wrapper {
+    position: relative;
+    width: 500px;  /* Подбери ширину под размеры своих картинок */
+    height: 500px; /* Высота должна соответствовать пропорциям графики */
+}
+
+/* Общий класс для всех слоев */
+.gram-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+   
+    object-fit: contain; /* Чтобы прозрачные поля картинок не искажались */
+}
+
+/* 1. Анимация корпуса проигрывателя (Плавная левитация) */
+.gram-body {
+    
+    animation: floatBody 6s ease-in-out infinite;
+}
+
+/* 2. Анимация пластинки (Едва заметное дыхание/изменение размера) */
+.gram-record {
+top: 420px;
+left: 90px;
+    transform-origin: center center;
+    animation: pulseRecord 4s ease-in-out infinite;
+}
+
+/* 3. Анимация иглы (Своя независимая левитация) */
+.gram-needle {
+    animation: floatNeedle 5s ease-in-out infinite;
+    top: 390px;
+    left: 120px;
+}
+
+/* Конечный текст под блоком */
+.music-footer-text {
+    font-size: 2rem;
+    line-height: 1.6;
+    color: #111;
+    margin-top: 50px;
+}
+
+
+/* --- КЛЮЧЕВЫЕ КАДРЫ ДЛЯ МАГИЧЕСКИХ АНИМАЦИЙ --- */
+
+/* Левитация корпуса */
+@keyframes floatBody {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); } /* Мягко идет вверх на 8 пикселей */
+}
+
+/* Незаметное увеличение-уменьшение пластинки */
+@keyframes pulseRecord {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); } /* Увеличивается всего на 2% — очень аккуратно */
+}
+
+/* Левитация иглы (смещена по времени и амплитуде, чтобы не двигаться в такт корпусу) */
+@keyframes floatNeedle {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-5px) translateX(2px); } 
+}
+
+
+/* АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ */
+@media (max-width: 768px) {
+    .music-grid-layout {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .music-slider-wrapper {
+        max-width: 100%;
+    }
+    .gramophone-wrapper {
+        width: 240px;
+        height: 240px;
+    }
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- ОСНОВНОЙ КОНТЕЙНЕР СЕКЦИИ --- */
+.monuments-section {
+    
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* Вводный абзац под заголовком */
+.section-lead {
+    text-align: center;
+    font-size: 2rem;
+    line-height: 1.5;
+    color: #111;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+/* Строки зигзага */
+.monuments-container {
+    margin-bottom: 50px;
+    position: relative;
+    left: 200px;
+    width: 1400px;
+    justify-content: center;
+}
+
+.monument-row {
+    display: flex;
+    align-items: flex-start; /* Выравнивание по верхнему краю как в макете */
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 70px;
+}
+
+/* Переворот четных строк для зигзага */
+.monument-row.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Изображения в зигзаге */
+.monument-image {
+    flex: 0 0 350px; /* Фиксированная аккуратная ширина для фото из макета */
+    display: flex;
+    justify-content: center;
+}
+
+.monument-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: filter 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Текстовый блок памятника */
+.monument-text {
+    flex: 1;
+}
+
+.monument-descr {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    color: #111;
+    margin-bottom: 15px;
     text-align: left;
 }
 
-.slider-wrapper {
+.monument-info {
+    font-size: 1.8rem;
+    color: #2B4D50;
+    margin-bottom: 2px;
+    text-align: left;
+}
+
+.monument-address {
+    font-size: 1.8rem;
+    color: #111;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+/* Гео-координаты */
+.monument-coordinates {
+    font-size: 1.5rem;
+    color: #A5D7FA;
+    font-family: 'UraBumBum', Courier, monospace; /* Придаем картографический вид */
+    margin-top: 10px;
+    text-align: left;
+}
+
+.monument-coordinates a {
+    
+    color: #A8CDCF;
+    
+}
+
+
+.pin-icon {
+    font-style: normal;
+}
+
+/* --- ВТОРАЯ ЧАСТЬ: ПЕРЕХОД И ПАННО --- */
+.monuments-transition-text {
+    text-align: center;
+    font-size: 1.8rem;
+    line-height: 1.6;
+    color: #111;
+    margin: 60px 200px 30px 250px;
+}
+
+/* Панорамный баннер озера Куйто */
+/* Панорамный баннер озера Куйто во всю ширину экрана */
+.panoramic-banner {
+    width: 2200px;                         /* Ровно 100% от ширины окна браузера */
     position: relative;
+    
+    left: -15px;
+   
+    overflow: hidden;
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
+
+.panoramic-banner img {
+     transition: filter 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Блок деревни Калевала (текст слева, маленькая сосна справа) */
+.kalevala-village-block {
+    display: flex;
+    width: 1600px;
+    align-items: center;
+    gap: 50px;
+    margin-top: 40px;
+    
+}
+
+.village-text {
+    flex: 1;
+    margin-left: 300px;
+}
+
+.village-text p {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    color: #111;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.village-image {
+    flex: 0 0 450px; /* Небольшая ширина для вертикального фото сосны */
+}
+
+.village-image img {
     width: 100%;
-    max-width: 1400px;
+    height: auto;
+    transition: filter 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+
+/* --- ТВОЙ ФИРМЕННЫЙ ЭФФЕКТ ОЖИВЛЕНИЯ ФОТОГРАФИЙ --- */
+.archive-photo {
+    filter: grayscale(100%) contrast(104%); /* Полное ЧБ по умолчанию */
+}
+
+/* Фотографии оживают (становятся цветными) при наведении на всю карточку/строку/баннер */
+.monument-row:hover .archive-photo,
+.panoramic-banner:hover .archive-photo,
+.kalevala-village-block:hover .archive-photo {
+    filter: grayscale(0%) contrast(100%);
+}
+
+/* Интерактивное покачивание/зум при наведении (кроме панорамы озера, её зумить не нужно) */
+.monument-row:hover .archive-photo,
+.monument-row:hover .author-graphic,
+.kalevala-village-block:hover .archive-photo {
+    transform: scale(1.02);
+}
+
+/* --- СТИЛИ ДЛЯ КИНЕМАТОГРАФА (3 КОЛОНКИ) --- */
+.cinema-section {
+    max-width: 1200px; /* Делаем чуть шире памятников, чтобы сетка дышала */
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 600px; /* Настрой под свой дизайн */
+    padding: 80px 20px 40px 20px;
 }
 
-.static-gramophone {
-    position: absolute;
-    right: 50px; /* Положение как на макете */
-    z-index: 10;
-    pointer-events: none; /* Пропускает клики сквозь себя */
-    height: 100%;
+.cinema-lead {
+    text-align: center;
+    font-size: 2rem;
+    line-height: 1.5;
+    color: #111;
+    max-width: 1000px;
+    margin: 20px auto 50px auto;
 }
 
-.slides-viewport {
-    width: 900px; /* Ширина рамки под альбом */
-    height: 500px;
-    display: flex;
-    overflow: hidden; /* Прячем остальные слайды */
-    scroll-behavior: smooth;
-    border: 1px solid #ccc; /* Рамка из твоего макета */
-    background: #fff;
+/* Сетка */
+.cinema-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    justify-self: center;
+    max-width: 1200px;
 }
 
-.music-slide {
-    min-width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.album-frame {
+.cinema-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
 }
 
-.album-frame img {
-    max-height: 350px;
-    margin-bottom: 20px;
+/* Кинематографичная обертка для кадра */
+.cinema-img-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Строгие кино-пропорции */
+    overflow: hidden;
+    margin-bottom: 18px;
+    position: relative; /* Чтобы спозиционировать иконку PLAY */
+
+    
 }
 
-.nav-arrow {
+.cinema-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+}
+
+/* Эффект полупрозрачного наложения и значка PLAY */
+.cinema-img-wrapper::after {
+    
     position: absolute;
-    z-index: 20;
-    background: none;
-    border: none;
-    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    color: #fff;
+    font-size: 2rem;
+    opacity: 0; /* Изначально кнопка не видна */
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+
+    pointer-events: none; /* Чтобы знак не мешал наведению мыши */
 }
 
-.prev { left: 20px; }
-.next { right: 20px; }
+/* Текстовые стили внутри карточки фильма */
+.cinema-meta {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    color: #A8CDCF;
+    margin-bottom: 5px;
+}
 
+.cinema-card h3 {
+    font-size: 2rem;
+    margin: 4px 0;
+    color: #111;
+}
+
+.cinema-author {
+    font-size: 2rem;
+    color: #111;
+    font-style: italic;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.cinema-card p {
+    font-size: 1.5rem;
+    line-height: 1.55;
+    color: #111;
+}
+
+/* --- МАГИЯ ИНТЕРФЕЙСА ПРИ НАВЕДЕНИИ НА КАРТОЧКУ --- */
+.cinema-card:hover .archive-photo {
+    filter: grayscale(0%) contrast(100%); /* Возвращаем цвет */
+    transform: scale(1.04); /* Легкий наплыв камеры */
+    opacity: 0.85; /* Чуть-чуть притемняем кадр, чтобы белая кнопка PLAY читалась идеально */
+}
+
+.cinema-card:hover .cinema-img-wrapper::after {
+    opacity: 1; /* Проявляем кнопку PLAY */
+    transform: translate(-50%, -50%) scale(1); /* Плавное увеличение кнопки */
+}
+
+/* МЕДИА-ЗАПРОС ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ */
+@media (max-width: 768px) {
+    /* Превращаем 3 колонки фильмов в 1 колонку на телефонах */
+    .cinema-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    /* На смартфонах значок PLAY можно сделать видимым сразу, так как ховера (наведения) на тач-экранах нет */
+    .cinema-img-wrapper::after {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    
+    /* Фотографии на телефонах делаем чуть менее блеклыми по умолчанию */
+    .archive-photo {
+        filter: grayscale(50%);
+    }
+}
+
+
+
+/* Начальное состояние: блоки скрыты и опущены */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(45px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Эффект вылета: когда скрипт добавляет класс */
+.reveal-on-scroll.visible,
+.reveal-on-scroll.active {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 jajaja6
 
@@ -2004,14 +3062,14 @@ jajaja6
     font-family: 'WildRune', sans-serif;
     font-size: 36px;
     margin-bottom: 30px;
-    color: #000;
+    color: #111;
 }
 
 /* Обертка интерактивной карты */
 .map-interactive-container {
     position: relative;
     width: 100%;
-    max-width: 900px; /* Ограничиваем максимальную ширину для сохранения качества */
+    max-width: 1400px; /* Ограничиваем максимальную ширину для сохранения качества */
     margin: 0 auto;
 }
 
@@ -2056,6 +3114,18 @@ jajaja6
     left: 62%;
 }
 
+.hotspot-tapiola {
+    top: 24%;
+    left: 20%;
+}
+
+.hotspot-ahtiola {
+    top: 50%;
+    left: 50%;
+}
+
+
+
 /* Стили самой SVG-метки */
 .marker-svg {
     width: 100%;
@@ -2071,11 +3141,17 @@ jajaja6
 /* Стили PNG-плашки с названием (Tooltip) */
 .place-tooltip-png {
     position: absolute;
-    bottom: 110%; /* Появляется строго НАД меткой */
+    bottom: 120%; /* Чуть приподняли над меткой */
     left: 50%;
     transform: translateX(-50%) translateY(10px); /* Смещение вниз для эффекта вылета */
-    width: 150px; /* Задай ширину под размеры твоих картинок-плашек */
+    
+    /* ГЛАВНОЕ ИСПРАВЛЕНИЕ: ломаем ограничение маленькой точки */
+    max-width: none !important; 
+    
+    /* Задаем реальный крупный размер для плашки (подбери под себя) */
+    width: 150px; 
     height: auto;
+    
     opacity: 0;
     pointer-events: none; /* Чтобы плашка не мешала кликать */
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -2087,7 +3163,6 @@ jajaja6
     opacity: 1;
     transform: translateX(-50%) translateY(0);
 }
-
 /* Добавь эти стили к уже существующему CSS карты из предыдущего ответа */
 
 /* Координаты для новой метки Сампо */
@@ -2128,7 +3203,7 @@ jajaja6
 
 .slide-info-col { flex: 1; }
 .slide-image-col { flex: 1; display: flex; justify-content: center; }
-.slide-image-col img { max-width: 100%; height: auto; object-fit: contain; }
+.slide-image-col img { max-width: 110%; height: auto; object-fit: contain; }
 
 .slide-place-title {
     font-family: 'WildRune', sans-serif;
@@ -2152,7 +3227,7 @@ jajaja6
     border-radius: 4px;
 }
 
-.slide-desc-paragraph { font-size: 2rem; line-height: 1.6; margin-bottom: 15px; color: #000; }
+.slide-desc-paragraph { font-size: 2rem; line-height: 1.6; margin-bottom: 15px; color: #111; }
 .map-arrow { background: none; border: none; width: 30px; height: 50px; cursor: pointer; position: relative; }
 .map-arrow::before { content: ''; position: absolute; top: 50%; width: 20px; height: 20px; border-top: 3px solid #a8cdcf; border-left: 3px solid #a8cdcf; }
 .prev-arrow::before { left: 5px; transform: translateY(-50%) rotate(-45deg); }

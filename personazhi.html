@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калевала — Краткий пересказ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="parchment-bg">
+
+    <div id="overlay-menu" class="menu-overlay">
+        <div class="menu-content">
+            <h2 class="menu-title">МЕНЮ</h2>
+            <nav>
+                <a href="index.html" onclick="toggleMenu()">главная</a>
+                <a href="pereskaz.html" onclick="toggleMenu()">краткий пересказ</a>
+                <a href="mir.html" onclick="toggleMenu()">концепция мироздания</a>
+                <a href="personazhi.html" onclick="toggleMenu()">главные герои</a>
+                <a href="narod.html" onclick="toggleMenu()">отражение в народной культуре</a>
+                <a href="iskusstvo.html" onclick="toggleMenu()">Калевала в современном искусстве</a>
+            </nav>
+        </div>
+    </div>
+
+    <header>
+        <div class="burger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <img src="картинки/фон для остальных страниц.png" class="chtoeto" alt="">
+         <img src="картинки/колесико.png" class="koleso1" alt=""><img src="картинки/колесико.png" class="koleso2" alt="">
+    </header>
+
+    <main class="summary-container">
+        <div class="summary-header">
+            <h2 class="meaning-title reveal">Главные герои</h2>
+            <p class="meaning-title-mini reveal">самые важные персонажи</p>
+        </div>
+
+   
+
+        <div class="blue-block-wrap reveal">
+            <img src="картинки/сбоку штука короткая.png" class="choblya3" alt="">
+            <img src="картинки/сбоку штука короткая.png" class="choblya4" alt="">
+
+            <div class="blue-bg-box">
+                <p class="meaning-text">
+                    Каждый персонаж Калевалы внёс свой вклад в развитие истории, от мала до велика. Однако персонажей так много, что о всех не рассказать, поэтому уделим внимание самым ярким действующим лицам.
+                </p>
+            </div>
+        </div>
+<section class="heroes-section reveal">
+
+    <nav class="heroes-nav">
+        <button class="hero-btn active" onclick="showHero('vyaunya', this)">ВЯЙНЯМЁЙНЕН</button>
+        <button class="hero-btn" onclick="showHero('ilmarinen', this)">ИЛЬМАРИНЕН</button>
+        <button class="hero-btn" onclick="showHero('lemmink', this)">ЛЕММИНКЯЙНЕН</button>
+        <button class="hero-btn" onclick="showHero('louhi', this)">ЛОУХИ</button>
+        
+    </nav>
+
+    <div class="heroes-content-wrapper">
+        
+        <div id="vyaunya" class="hero-card active">
+            <div class="hero-grid">
+                <div class="hero-image">
+                   
+    <img src="картинки/Вяйнямёйнен .png" class="img-base" alt="Кадр комикса">
+    
+    <img src="картинки/Вяйнямёйнен цв.png" class="img-overlay" alt="Кадр комикса ховер">
+
+                </div>
+                <div class="hero-info">
+                    <h3>Старый, верный Вяйнямёйнен</h3>
+                    <p>Главный герой эпоса, великий мудрец и песнопевец. Он участвовал в сотворении мира и добывал магические знания для своего народа. Его игра на кантеле заставляла плакать даже саму природу.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="ilmarinen" class="hero-card">
+            <div class="hero-grid">
+                <div class="hero-image">
+                     <img src="картинки/Ильмаринен .png" class="img-base" alt="Кадр комикса">
+    
+    <img src="картинки/Ильмаринен цвет.png" class="img-overlay" alt="Кадр комикса ховер">
+                </div>
+                <div class="hero-info">
+                    <h3>Кузнец Ильмаринен</h3>
+                    <p>Искусный мастер, «вечный кователь», который выковал небесный свод и волшебную мельницу Сампо. Он олицетворяет созидательную силу и трудолюбие финского народа.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="lemmink" class="hero-card">
+            <div class="hero-grid">
+                <div class="hero-image">
+                    <img src="картинки/Лемминкяйнен .png" class="img-base" alt="Кадр комикса">
+    
+    <img src="картинки/Лемминкяйнен цв .png" class="img-overlay" alt="Кадр комикса ховер">
+                </div>
+                <div class="hero-info">
+                    <h3>Веселый Лемминкяйнен</h3>
+                    <p>Чародей и бесстрашный воин, искатель приключений и женских сердец. Его история полна опасностей, включая путешествие в царство мертвых — Туонелу.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="louhi" class="hero-card">
+            <div class="hero-grid">
+                <div class="hero-image">
+                     <img src="картинки/Лоухи.png" class="img-base" alt="Кадр комикса">
+    
+    <img src="картинки/Лоухи цв.png" class="img-overlay" alt="Кадр комикса ховер">
+                </div>
+                <div class="hero-info">
+                    <h3>Хозяйка Похъёлы</h3>
+                    <p>Могущественная колдунья, правящая суровой северной страной. Она выступает главным антагонистом, защищая интересы своего народа и пытаясь удержать Сампо.</p>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+</section>
+<section class="heroes-content-wrapper reveal">
+<div class="heroes-nav secondary-nav">
+    <button class="hero-btn small" onclick="showHero('aino', this)">АЙНО</button>
+    <button class="hero-btn small" onclick="showHero('joukahainen', this)">ЙОУКАХАЙНЕН</button>
+    <button class="hero-btn" onclick="showHero('kullervo', this)">КУЛЛЕРВО</button>
+    <button class="hero-btn small" onclick="showHero('ilmatar', this)">ИЛЬМАТАР</button>
+    <button class="hero-btn small" onclick="showHero('marjatta', this)">МАРЬЯТТА</button>
+</div>
+
+<div id="aino" class="hero-card active">
+    <div class="hero-grid">
+        <div class="hero-image">
+            <img src="картинки/Айно.png" class="img-base" alt="Кадр комикса">
+    
+    <img src="картинки/Айно цв.png" class="img-overlay" alt="Кадр комикса ховер">
+        </div>
+        <div class="hero-info">
+            <h3>Юная Айно</h3>
+            <p>Сестра Йоукахайнена, которую он пообещал в жены Вяйнямёйнену за своё спасение. Не желая выходить замуж за старика, Айно превратилась в морскую деву (веллимо). Её образ — символ чистоты и печальной судьбы.</p>
+        </div>
+    </div>
+</div>
+
+<div id="kullervo" class="hero-card">
+            <div class="hero-grid">
+                <div class="hero-image">
+                    <img src="картинки/вяйнямейнен.png" alt="Куллерво">
+                </div>
+                <div class="hero-info">
+                    <h3>Трагический Куллерво</h3>
+                    <p>Мстительный и несчастный герой с тяжелой судьбой. Его история — это глубокая драма о роке, ошибках прошлого и невозможности убежать от самого себя.</p>
+                </div>
+            </div>
+        </div>
+
+<div id="joukahainen" class="hero-card">
+    <div class="hero-grid">
+        <div class="hero-image">
+            <img src="картинки/вяйнямейнен.png" alt="Йоукахайнен">
+        </div>
+        <div class="hero-info">
+            <h3>Дерзкий Йоукахайнен</h3>
+            <p>Молодой лапландец, который осмелился вызвать Вяйнямёйнена на состязание в песнопении. Проиграв, он оказался по горло в болоте и был вынужден отдать свою сестру в обмен на жизнь.</p>
+        </div>
+    </div>
+</div>
+
+<div id="ilmatar" class="hero-card">
+    <div class="hero-grid">
+        <div class="hero-image">
+            <img src="картинки/вяйнямейнен.png" alt="Ильматар">
+        </div>
+        <div class="hero-info">
+            <h3>Дочь воздуха Ильматар</h3>
+            <p>Небесная дева, мать Вяйнямёйнена. Устав от одиночества в небесах, она спустилась в океан, где участвовала в сотворении мира из яиц утки, присевшей ей на колено.</p>
+        </div>
+    </div>
+</div>
+
+<div id="marjatta" class="hero-card">
+    <div class="hero-grid">
+        <div class="hero-image">
+            <img src="картинки/вяйнямейнен.png" alt="Марьятта">
+        </div>
+        <div class="hero-info">
+            <h3>Пречистая Марьятта</h3>
+            <p>Дева, забеременевшая от съеденной брусники. Её сын стал новым королем Карелии, что ознаменовало конец эпохи старых героев и уход Вяйнямёйнена в его последнюю поездку.</p>
+        </div>
+    </div>
+</div></section>
+    </main>
+<button id="backToTop" title="Наверх"></button>
+    <footer class="main-footer reveal">
+        <div class="footer-bottom-wave">
+            <div class="footer-content-wrap">
+                <div class="social-links">
+                    <a href="#" class="social-icon">Telegram</a>
+                    <a href="#" class="social-icon">ВКонтакте</a>
+                </div>
+                <div class="university-logo">
+                    <a href="https://vhutein.ru" target="_blank">
+                        <img src="картинки/vhutein.png" alt="ВХУТЕИН">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калевала — Краткий пересказ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+    <div id="overlay-menu" class="menu-overlay">
+        <div class="menu-content">
+            <h2 class="menu-title">МЕНЮ</h2>
+            <nav>
+                <a href="index.html" onclick="toggleMenu()">главная</a>
+                <a href="pereskaz.html" onclick="toggleMenu()">краткий пересказ</a>
+                <a href="mir.html" onclick="toggleMenu()">концепция мироздания</a>
+                <a href="personazhi.html" onclick="toggleMenu()">главные герои</a>
+                <a href="narod.html" onclick="toggleMenu()">отражение в народной культуре</a>
+                <a href="iskusstvo.html" onclick="toggleMenu()">Калевала в современном искусстве</a>
+            </nav>
+        </div>
+    </div>
+
+    <header>
+        <div class="burger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <img src="картинки/фон для остальных страниц.png" class="chtoeto" alt="">
+         <img src="картинки/колесико.png" class="koleso1" alt=""><img src="картинки/колесико.png" class="koleso2" alt="">
+    </header>
+
+    <main class="summary-container">
+        <div class="summary-header">
+            <h2 class="meaning-title reveal">Концепция мироздания</h2>
+            <p class="meaning-title-mini reveal">устройство мира Калевалы</p>
+        </div>
+
+    
+
+        <div class="blue-block-wrap reveal">
+            <img src="картинки/сбоку штука короткая.png" class="choblya5" alt="">
+            <img src="картинки/сбоку штука короткая.png" class="choblya6" alt="">
+
+            <div class="blue-bg-box">
+                <p class="meaning-text">
+                    Калевальский мир раньше состоял из первозданных небес и моря. Стоило Ильматар уронить яйцо утки, как из его осколков появились земли той Калевалы, которую мы знаем сейчас.
+                </p>
+            </div>
+        </div>
+<section class="kalevala-page">
+  <div class="decor-border left"></div>
+  <div class="decor-border right"></div>
+  <section class="kalevala-map-section">
+       <h2 class="meaning-title">
+                    <span class="marker-wrap">
+                        <svg class="marker-svg" viewBox="0 0 400 20" preserveAspectRatio="none">
+                            <path d="M5,10 L395,10" stroke="#A8CDCF" stroke-width="18" stroke-linecap="round" />
+                        </svg>
+                        <span class="highlight">карта калевалы</span>
+                    </span>
+        </h2> 
+    
+    <div class="map-interactive-container reveal">
+        <img src="картинки/карта калевала1.png" alt="Карта Калевалы" id="mainMapImage" class="main-map-img">
+
+        <div class="map-hotspot-wrapper hotspot-tuonela" onclick="selectPlace(1, 2)">
+            <img src="картинки/место туонела.png" alt="Туонела" class="place-tooltip-png">
+            <img src="картинки/метка2.svg" alt="Метка" class="marker-svg">
+        </div>
+
+        <div class="map-hotspot-wrapper hotspot-pohjola" onclick="selectPlace(2, 3)">
+            <img src="картинки/место похъёла.png" alt="Похъёла" class="place-tooltip-png">
+            <img src="картинки/метка2.svg" alt="Метка" class="marker-svg">
+        </div>
+
+        <div class="map-hotspot-wrapper hotspot-suomi" onclick="selectPlace(0, 4)">
+            <img src="картинки/место суоми.png" alt="Суоми" class="place-tooltip-png">
+            <img src="картинки/метка2.svg" alt="Метка" class="marker-svg">
+        </div>
+
+        <div class="map-hotspot-wrapper hotspot-nebo" onclick="selectPlace(4, 5)">
+            <img src="картинки/место небо.png" alt="Небо" class="place-tooltip-png">
+            <img src="картинки/метка2.svg" alt="Метка" class="marker-svg">
+        </div>
+
+        <div class="map-hotspot-wrapper hotspot-sampo" onclick="selectPlace(3, null)">
+            <img src="картинки/место сампо.png" alt="Сампо" class="place-tooltip-png">
+            <img src="картинки/метка2.svg" alt="Метка" class="marker-svg">
+        </div>
+
+        <div class="map-hotspot-wrapper hotspot-tapiola" onclick="selectPlace(5, 4)">
+    <img src="картинки/место тапиола.png" alt="Тапиола" class="place-tooltip-png">
+    <img src="картинки/метка.svg" alt="Метка" class="marker-svg">
+</div>
+<div class="map-hotspot-wrapper hotspot-ahtiola" onclick="selectPlace(6, 6)">
+    <img src="картинки/место ахтиола.png" alt="Ахтиола" class="place-tooltip-png">
+    <img src="картинки/метка.svg" alt="Метка" class="marker-svg">
+</div>
+    </div>
+
+    <p class="map-caption-text reveal">
+        Мир Калевалы полон магических мест, каждое из которых имеет своих стражей. Каждое место является сильной метафорой к различным сферам жизни финно-угров.
+    </p>
+    
+    <div class="map-slider-wrapper reveal">
+        <button class="map-arrow prev-arrow" onclick="moveMapSlider(-1)"></button>
+        
+        <div class="map-slider-viewport" id="mapSlider">
+            <div class="map-slider-track">
+                
+                <div class="map-slide-card">
+                    <div class="slide-info-col">
+                        <h3 class="slide-place-title"><span>КАЛЕВАЛА</span></h3>
+                        <p class="slide-desc-paragraph">Земля озер и лесов, бескрайний дом для отважных героев Калевалы: Вяйнямёйнена и его братьев, Айно, Йоукахайнена и Куллерво.</p>
+                        <p class="slide-desc-paragraph">Здесь рождаются песни и куются великие сюжеты рунического эпоса, как трагичные, так и счастливые.</p>
+                    </div>
+                    <div class="slide-image-col">
+                        <img src="картинки/суоми.png" alt="Иллюстрация Суоми">
+                    </div>
+                </div>
+
+                <div class="map-slide-card">
+                    <div class="slide-info-col">
+                        <h3 class="slide-place-title"><span>ТУОНЕЛА</span></h3>
+                        <p class="slide-desc-paragraph">Подземное царство мертвых, окруженное бурной рекой Туони. Это место охраняется туонельским лебедем и стражем с тремя псами.</p>
+                        <p class="slide-desc-paragraph">Сюда отправляются за тайными знаниями, преодолевая смертельные опасности.</p>
+                    </div>
+                    <div class="slide-image-col">
+                        <img src="картинки/туонела.png" alt="Иллюстрация Туонелы">
+                    </div>
+                </div>
+
+                <div class="map-slide-card">
+                    <div class="slide-info-col">
+                        <h3 class="slide-place-title"><span>ПОХЪЁЛА</span></h3>
+                        <p class="slide-desc-paragraph">Суровые, туманные и мрачные северные земли под властью хитрой колдуньи Лоухи и ее двух дочерей.</p>
+                        <p class="slide-desc-paragraph">Вечное противостояние зеленой Калевалы и ледяной Похъёлы за владение мельницей Сампо.</p>
+                    </div>
+                    <div class="slide-image-col">
+                        <img src="картинки/похъёла.png" alt="Иллюстрация Похъелы">
+                    </div>
+                </div>
+
+                <div class="map-slide-card">
+                    <div class="slide-info-col">
+                        <h3 class="slide-place-title"><span>САМПО</span></h3>
+                        <p class="slide-desc-paragraph">Волшебная чудо-мельница, выкованная Ильмариненом. Она мелет муку, соль и золото.</p>
+                        <p class="slide-desc-paragraph">Сампо - это символ бесконечного изобилия, счастья и благополучия, за который бьются народы.</p>
+                    </div>
+                    <div class="slide-image-col">
+                        <img src="картинки/сампо.png" alt="Иллюстрация Сампо">
+                    </div>
+                </div>
+
+                <div class="map-slide-card">
+                    <div class="slide-info-col">
+                        <h3 class="slide-place-title"><span>НЕБЕСНЫЙ СВОД</span></h3>
+                        <p class="slide-desc-paragraph">Сфера высших сил и звезд кузнеца Ильмаринена, сотворившего небесный купол.</p>
+                        <p class="slide-desc-paragraph">Здесь находится обитель Укко — верховного бога громы и молнии, направляющего судьбы земных героев. Ранее здесь жила Ильматар, мать Вяйнямёйнена.</p>
+                    </div>
+                    <div class="slide-image-col">
+                        <img src="картинки/небо.png" alt="Иллюстрация Неба">
+                    </div>
+                </div>
+                
+                 <div class="map-slide-card">
+                    <div class="slide-info-col">
+                        <h3 class="slide-place-title"><span>ТАПИОЛА И ХИЙТОЛА</span></h3>
+                        <p class="slide-desc-paragraph">Густой лес - обитель Тапио и Хийси, двух лесных духов. </p>
+                        <p class="slide-desc-paragraph">Тапио и его супруга Миеликка охраняют всех лесных животных, а охотники просят у Тапио удачи в охоте.</p>
+                        <p class="slide-desc-paragraph">Хийси - жуткий дух гиблых болот. Лось, которого одолел Лемминкяйнен - создание Хийси.</p>
+                    </div>
+                    <div class="slide-image-col">
+                        <img src="картинки/тапиола.png" alt="Иллюстрация Неба">
+                    </div>
+                </div>
+
+
+                  <div class="map-slide-card">
+                    <div class="slide-info-col">
+                        <h3 class="slide-place-title"><span>АХТИОЛА</span></h3>
+                        <p class="slide-desc-paragraph">Реки, озёра и моря принадлежат духу Ахто и хозяйке вод Велламо.</p>
+                        <p class="slide-desc-paragraph">Вдвоём они хранят покой водных глубин и их обитателей.</p>
+                    </div>
+                    <div class="slide-image-col">
+                        <img src="картинки/ахтиола.png" alt="Иллюстрация Неба">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="map-arrow next-arrow" onclick="moveMapSlider(1)"></button>
+    </div>
+     <p class="map-caption-text reveal">
+       Хоть и нет точной информации, откуда взялись Похъёла и Туонела, это не мешает составить понимание того, как работает этот магический мир.
+    </p>
+</section>
+
+</main>
+<button id="backToTop" title="Наверх"></button>
+    <footer class="main-footer reveal">
+        <div class="footer-bottom-wave">
+            <div class="footer-content-wrap">
+                <div class="social-links">
+                    <a href="#" class="social-icon">Telegram</a>
+                    <a href="#" class="social-icon">ВКонтакте</a>
+                </div>
+                <div class="university-logo">
+                    <a href="https://vhutein.ru" target="_blank">
+                        <img src="картинки/vhutein.png" alt="ВХУТЕИН">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

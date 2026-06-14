@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калевала — Краткий пересказ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+    <div id="overlay-menu" class="menu-overlay">
+        <div class="menu-content">
+            <h2 class="menu-title">МЕНЮ</h2>
+            <nav>
+                <a href="index.html" onclick="toggleMenu()">главная</a>
+                <a href="pereskaz.html" onclick="toggleMenu()">краткий пересказ</a>
+                <a href="mir.html" onclick="toggleMenu()">концепция мироздания</a>
+                <a href="personazhi.html" onclick="toggleMenu()">главные герои</a>
+                <a href="narod.html" onclick="toggleMenu()">отражение в народной культуре</a>
+                <a href="iskusstvo.html" onclick="toggleMenu()">Калевала в современном искусстве</a>
+            </nav>
+        </div>
+    </div>
+
+    <header>
+        <div class="burger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <img src="картинки/фон для остальных страниц.png" class="chtoeto" alt="">
+         <img src="картинки/колесико.png" class="koleso1" alt=""><img src="картинки/колесико.png" class="koleso2" alt="">
+    </header>
+
+    <main class="summary-container">
+        <div class="summary-header">
+            <h2 class="meaning-title reveal">Краткий пересказ</h2>
+            <p class="meaning-title-mini reveal">основные события сюжета</p>
+        </div>
+
+    
+
+        <div class="blue-block-wrap reveal">
+            <img src="картинки/сбоку штука меньше средней.png" class="choblya5" alt="">
+            <img src="картинки/сбоку штука меньше средней.png" class="choblya6" alt="">
+
+            <div class="blue-bg-box">
+                <p class="meaning-text">
+                    Калевала — это не просто сборник рун, это история о столкновении двух миров: 
+                    светлой Калевалы и мрачной Похъёлы. Глубинный смысл кроется в вечном поиске 
+                    счастья (Сампо) и понимании того, что любое созидание требует жертв <br> и мудрости.
+                </p>
+            </div>
+        </div>
+<section class="kalevala-page">
+  <div class="decor-border left"></div>
+  <div class="decor-border right"></div>
+
+
+   <main class="kalevala-page">
+        
+        <header class="rune-header reveal">
+            <span id="current-part-label" class="part-number">ЧАСТЬ I • СОТВОРЕНИЕ МИРА</span>
+            
+            <div class="rune-title-container">
+                <span class="arrow-nav" id="prev-btn" onclick="navigateRune(-1)">&lt;</span>
+                
+                <div class="rune-dropdown-trigger" onclick="toggleRuneMenu()">
+                    <h1 id="current-rune-title">РУНА 1</h1>
+                    <span class="dropdown-chevron">▼</span>
+                </div>
+                
+                <span class="arrow-nav" id="next-btn" onclick="navigateRune(1)">&gt;</span>
+            </div>
+
+            <nav id="kalevala-overlay-menu" class="navigationnn-overlay">
+                <div class="menu-content">
+                    <h2>СОДЕРЖАНИЕ</h2>
+                    <ul>
+                        <li class="menu-item active" data-target="volume-1" onclick="selectRune('volume-1')">
+                            <span>Часть I.</span> Руна 1
+                        </li>
+                        <li class="menu-item" data-target="volume-2-3" onclick="selectRune('volume-2-3')">
+                            <span>Часть II.</span> Руны 2 – 3
+                        </li>
+                        <li class="menu-item" data-target="volume-4-6" onclick="selectRune('volume-4-6')">
+                            <span>Часть III.</span> Руны 4 – 6
+                        </li>
+                        <li class="menu-item" data-target="volume-7" onclick="selectRune('volume-7')">
+                            <span>Часть IV.</span> Руна 7
+                        </li>
+                            <li class="menu-item active" data-target="volume-8-10" onclick="selectRune('volume-8-10')">
+                            <span>Часть V.</span> Руна 8-10
+                        </li>
+                        <li class="menu-item" data-target="volume-11-15" onclick="selectRune('volume-11-15')">
+                            <span>Часть VI.</span> Руны 11-15
+                        </li>
+                        <li class="menu-item" data-target="volume-16-20" onclick="selectRune('volume-16-20')">
+                            <span>Часть VII.</span> Руны 16-20
+                        </li>
+                        <li class="menu-item" data-target="volume-21-25" onclick="selectRune('volume-21-25')">
+                            <span>Часть VIII.</span> Руна 21-25
+                        </li>
+                            <li class="menu-item active" data-target="volume-26-30" onclick="selectRune('volume-26-30')">
+                            <span>Часть IХ.</span> Руна 26-30
+                        </li>
+                        <li class="menu-item" data-target="volume-31-36" onclick="selectRune('volume-31-36')">
+                            <span>Часть Х.</span> Руны 31-36
+                        </li>
+                        <li class="menu-item" data-target="volume-37-38" onclick="selectRune('volume-37-38')">
+                            <span>Часть ХI.</span> Руны 37-38
+                        </li>
+                        <li class="menu-item" data-target="volume-39-44" onclick="selectRune('volume-39-44')">
+                            <span>Часть ХII.</span> Руна 39-44
+                        </li>
+                            <li class="menu-item active" data-target="volume-45-49" onclick="selectRune('volume-45-49')">
+                            <span>Часть ХIII.</span> Руна 45-49
+                        </li>
+                        <li class="menu-item" data-target="volume-50" onclick="selectRune('volume-50')">
+                            <span>Часть ХIV.</span> Руна 50
+                        </li>
+                     
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div class="chapters-wrapper">
+
+            <section id="volume-1" class="rune-volume active-volume reveal">
+                <div class="comic-center-block">
+                    <img src="картинки/Group 879.png" alt="Руна 1 Полный кадр">
+                    
+                    <div class="image-swap-box">
+                        <img src="картинки/Group 884.png" class="img-base reveal">
+                        <img src="картинки/Group 882.png" class="img-overlay reveal">
+                    </div>
+                    
+                    <img src="картинки/Group 883.png" alt="Руна 1 Финал">
+                </div>
+            </section>
+
+            <section id="volume-2-3" class="rune-volume hidden">
+                <div class="comic-center-block">
+                    <img src="картинки/руна2_3_весь_комикс.png" alt="Руны 2 и 3">
+                </div>
+            </section>
+
+            <section id="volume-4-6" class="rune-volume hidden">
+                <div class="comic-center-block">
+                    <img src="картинки/руна4_6_весь_комикс.png" alt="Руны 4, 5, 6">
+                </div>
+            </section>
+
+            <section id="volume-7" class="rune-volume hidden">
+                <div class="comic-center-block reveal">
+                    <img src="картинки/Group 885.png" alt="Руна 7">
+                </div>
+                <div class="comic-center-block reveal">
+                    <img src="картинки/Group 886.png" alt="Руна 7">
+                </div>
+                <div class="comic-center-block reveal">
+                    <img src="картинки/Group 887.png" alt="Руна 7">
+                </div>
+                <div class="comic-center-block reveal">
+                    <img src="картинки/Group 888.png" alt="Руна 7">
+                </div>
+                <div class="comic-center-block reveal">
+                    <img src="картинки/Group 889.png" alt="Руна 7">
+                </div>
+            </section>
+
+        </div>
+
+          <div class="decorative-divider reveal">
+            <img src="картинки/красотулька.png" alt="Декор" class="divider-img">
+        </div>
+
+    </main>
+</section>
+    </main>
+  <button id="backToTop" title="Наверх"></button>
+     <footer class="main-footer reveal">
+        <div class="footer-bottom-wave">
+            <div class="footer-content-wrap">
+                <div class="social-links">
+                    <a href="https://t.me/your_link" target="_blank" class="social-icon">Telegram</a>
+                    <a href="https://vk.com/your_link" target="_blank" class="social-icon">ВКонтакте</a>
+                </div>
+
+                <div class="university-logo">
+                    <a href="https://vhutein.ru" target="_blank">
+                        <span class="vhutein-text"><img src="картинки/vhutein.png"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>

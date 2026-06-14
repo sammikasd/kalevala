@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калевала — Краткий пересказ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+    <div id="overlay-menu" class="menu-overlay">
+        <div class="menu-content">
+            <h2 class="menu-title">МЕНЮ</h2>
+            <nav>
+               <a href="index.html" onclick="toggleMenu()">главная</a>
+                <a href="pereskaz.html" onclick="toggleMenu()">краткий пересказ</a>
+                <a href="mir.html" onclick="toggleMenu()">концепция мироздания</a>
+                <a href="personazhi.html" onclick="toggleMenu()">главные герои</a>
+                <a href="narod.html" onclick="toggleMenu()">отражение в народной культуре</a>
+                <a href="iskusstvo.html" onclick="toggleMenu()">Калевала в современном искусстве</a>
+            </nav>
+        </div>
+    </div>
+
+    <header>
+        <div class="burger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <img src="картинки/фон для остальных страниц.png" class="chtoeto" alt="">
+        <img src="картинки/колесико.png" class="koleso1" alt=""><img src="картинки/колесико.png" class="koleso2" alt="">
+    </header>
+
+    <main class="summary-container">
+        <div class="summary-header">
+            <h2 class="meaning-title reveal">Калевала в народе</h2>
+            <p class="meaning-title-mini reveal">влияние Калевалы на фольклор</p>
+        </div>
+
+       
+
+        <div class="blue-block-wrap reveal">
+            <img src="картинки/сбоку штука средняя.png" class="choblya5" alt="">
+            <img src="картинки/сбоку штука средняя.png" class="choblya6" alt="">
+
+            <div class="blue-bg-box">
+                <p class="meaning-text">
+                    Калевала стала не только сборником народных сказаний, но и стала отражением традиций народов Карелии <br> и Финляндии, а также положила начало развитию финского языка.
+                </p>
+            </div>
+        </div>
+<section class="kalevala-page">
+
+<section class="language-section reveal">  
+     <div class="decorative-divider reveal">
+            <img src="картинки/красотулька.png" alt="Декор" class="divider-img">
+        </div>
+
+      <h2 class="meaning-title">
+                    <span class="marker-wrap">
+                        <svg class="marker-svg" viewBox="0 0 400 20" preserveAspectRatio="none">
+                            <path d="M5,10 L395,10" stroke="#A8CDCF" stroke-width="18" stroke-linecap="round" />
+                        </svg>
+                        <span class="highlight">язык как магия</span>
+                    </span>
+        </h2>                    
+    <p class="meaning-title-mini">филологическое исследование наследия Лённрота</p>
+
+ 
+    <div class="lang-intro-text">
+        <p>
+            До 1835 года финский язык существовал в тени шведской администрации и латинской науки. 
+            <strong>Элиас Лённрот</strong>, совершив 11 экспедиций и пройдя более 20 000 километров, 
+            не просто записал руны — он стал архитектором нации. Лингвисты (такие как Лаури Хаккулинен) 
+            отмечают, что «Калевала» стала "плавильным котлом", где архаичные заговоры восточной Карелии 
+            соединились с западной грамматикой.
+        </p>
+        
+        <blockquote class="scholar-quote">
+            «…Лённрот не следовал народной традиции, а ломал ее; он нарушал фольклорные законы и нормы и подчинял народный эпос литературным нормам и требованиям своего времени». 
+            <cite>— филолог и фольклорист Владимир Пропп (1895–1970)</cite>
+        </blockquote>
+    </div>
+
+    <div class="blue-block-wrapik reveal">
+        
+        <div class="blue-bg-box">
+            <div class="metric-info">
+                <h3>Архитектура Руны: Хорей и Аллитерация</h3>
+                <p>
+                    Элиас Лённрот сохранил уникальный ритм народных рун — калевальскую метрику. Её основой является четырёхстопный хорей, в котором строки объединяются не рифмой, а аллитерацией (повтором начальных звуков) и параллелизмом. Повторы и вариации одних и тех же образов усиливают напевность текста и создают особую заклинательную интонацию. Именно этот ритм придал финскому эпосу его характерную музыкальность и торжественность.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+    <h3 class="sub-section-title">Словарь созидания</h3>
+    
+    <div class="word-cards-container">
+        <div class="word-card" onclick="toggleWord(this)">
+            <div class="word-front">Kirjallisuus</div>
+            <div class="word-back">
+                <strong>Литература</strong>
+                Лённрот образовал это слово от корня kirja ("книга"). До XIX века <br> в финском языке не существовало слова для обозначения литературы как культурного явления.
+            </div>
+        </div>
+
+        <div class="word-card" onclick="toggleWord(this)">
+            <div class="word-front">Sivistys</div>
+            <div class="word-back">
+                <strong>Образование / Культура</strong>
+                Слово связано <br> с глаголом sivistää — "просвещать", "развивать". Лённрот использовал его для обозначения культуры, образования и духовного развития общества.
+            </div>
+        </div>
+
+        <div class="word-card" onclick="toggleWord(this)">
+            <div class="word-front">Valtio</div>
+            <div class="word-back">
+                <strong>Государство</strong>
+                Слово образовано от valta ("власть"). В XIX веке оно закрепилось <br> в финском языке как обозначение государства.
+            </div>
+        </div>
+
+        <div class="word-card" onclick="toggleWord(this)">
+            <div class="word-front">Sampo</div>
+            <div class="word-back">
+                <strong>Сампо</strong>
+                В карело-финском эпосе Сампо — мифический предмет, приносящий богатство и изобилие. <br> В исследованиях его трактуют как символ плодородия и достатка.
+            </div>
+        </div>
+    </div>
+</section> 
+ <div class="decorative-divider reveal">
+            <img src="картинки/красотулька.png" alt="Декор" class="divider-img">
+        </div>
+<section class="runo-section reveal">
+     <h2 class="meaning-title">
+                    <span class="marker-wrap">
+                        <svg class="marker-svg" viewBox="0 0 400 20" preserveAspectRatio="none">
+                            <path d="M5,10 L395,10" stroke="#A8CDCF" stroke-width="18" stroke-linecap="round" />
+                        </svg>
+                        <span class="highlight">голоса древнего севера</span>
+                    </span>
+        </h2>  
+    <p class="meaning-title-mini">ритуалы, инструменты и хранители калевальских рун</p>
+
+   
+
+    <div class="runo-intro-grid">
+        <div class="runo-intro-text">
+            <h3>Как рождалась руна: Ритуал пения</h3>
+            <p>
+                Исполнение рун у карел и финнов было священнодействием. Самым завораживающим был 
+                <strong>обряд парного пения</strong>. Два певца садились друг напротив друга на скамью, 
+                брались за руки, и плавно покачивались взад-вперед в такт песне. Один из них (запевала) пел строчку, а второй (вторник) подхватывал её последнее слово 
+                <br> и повторял всю строку, давая первому секунды на то, чтобы вспомнить или сочинить продолжение. 
+                Так песня могла литься часами, уводя слушателей в глубокий транс.
+            </p>
+        </div>
+        <div class="runo-intro-visual">
+            <img src="картинки/поют.jpg" alt="Парное пение рунопевцев" class="engraving-style-img">
+        </div>
+    </div>
+
+    <div class="blue-block-wrapik reveal">
+        <div class="blue-bg-box">
+            <div class="kantele-info">
+                <h3>Кантеле — Дерево и Струны Творения</h3>
+                <p>
+                    Древнейшие руны пелись под аккомпанемент <strong>кантеле</strong>. 
+                    По легенде, первое кантеле Вяйнямёйнен сделал из челюсти гигантской щуки. В реальности 
+                    его выдавливали из единого куска березы или сосны, а струны плели из конского волоса. 
+                    Тихий, "шелестящий" звук этого инструмента считался мостом между миром живых 
+                    и царством мертвых (Туонелой). Под его звуки засыпали даже дикие звери.
+                </p>
+            </div>
+            
+            <div class="kantele-container">
+  <!-- Твой чистый рисунок кантеле без подписей -->
+  <img src="картинки/кантеле.png" alt="Строение кантеле" class="kantele-pic">
+
+  <!-- Интерактивные точки (координаты настроим через CSS % ) -->
+  <div class="hotspot" style="top: 50%; left: 15%;" data-info="korpus"></div>
+  <div class="hotspot" style="top: 31%; left: 43%;" data-info="deka"></div>
+  <div class="hotspot" style="top: 55%; left: 50%;" data-info="otverstie"></div>
+  <div class="hotspot" style="top: 40%; left: 70%;" data-info="struny"></div>
+  <div class="hotspot" style="top: 46%; left: 80%;" data-info="kolki"></div>
+
+  <!-- Блок, куда будет выводиться текст при клике -->
+  <div class="kantele-info-box">
+    <p id="kantele-text">Нажмите на элементы инструмента, чтобы узнать их историю.</p>
+  </div>
+</div>
+        </div>
+    </div>
+    <h2 class="meaning-title">
+                    <span class="marker-wrap">
+                        <svg class="marker-svg" viewBox="0 0 400 20" preserveAspectRatio="none">
+                            <path d="M5,10 L395,10" stroke="#A8CDCF" stroke-width="18" stroke-linecap="round" />
+                        </svg>
+                        <span class="highlight">три лика памяти</span>
+                    </span>
+        </h2> 
+   
+
+    <div class="singers-tabs">
+        <div class="singers-nav">
+            <button class="singer-btn active" onclick="showSinger('perttunen', this)">Архиппа Перттунен</button>
+            <button class="singer-btn" onclick="showSinger('paraske', this)">Ларин Параске</button>
+            <button class="singer-btn" onclick="showSinger('kuivalatar', this)">Матели Куйвалатар</button>
+        </div>
+
+        <div class="singers-content">
+            
+            <div id="perttunen" class="singer-card active">
+                <div class="singer-grid">
+                    <div class="singer-img-wrap">
+                        <img src="картинки/image 38.png" alt="Архиппа Перттунен" class="portrait-img">
+                    </div>
+                    <div class="singer-bio">
+                        <h4>Король карельских рунопевцев</h4>
+                        <p class="meta">Деревня Латваярви, Беломорская Карелия</p>
+                        <p>
+                            Именно от него Элиас Лённрот в 1834 году записал ядро будущей «Калевы» — более 4000 стихов. 
+                            Архиппа обладал феноменальной памятью и помнил руны своего отца так, как их пели сотни лет назад. 
+                            Лённрот писал о нем: «Он мог бы петь три дня подряд, <br> не повторяя ни одной песни».
+                        </p>
+                        <blockquote class="diary-snippet">
+                            «Старик плакал, когда пел о смерти Айно. Его голос дрожал, а пальцы гладили струны кантеле так нежно, будто он прикасался к живой душе».
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+            <div id="paraske" class="singer-card">
+                <div class="singer-grid">
+                    <div class="singer-img-wrap">
+                        <img src="картинки/параске.jpg" alt="Ларин Параске" class="portrait-img">
+                    </div>
+                    <div class="singer-bio">
+                        <h4>Плакальщица и душа Ингрии</h4>
+                        <p class="meta">Карельский перешеек</p>
+                        <p>
+                            Ижорская сказительница, обладавшая невероятным репертуаром <br> в 32 000 строк. Она знала 
+                            не только эпические руны, но и свадебные причитания, заговоры и плачи. Её образ стал 
+                            символом финской национальной самобытности, её портреты писали лучшие художники эпохи.
+                        </p>
+                        <blockquote class="diary-snippet">
+                            «Её песни лились как чистый лесной ручей. Она пела о женской доле так горько, что плакали все женщины в избе».
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+            <div id="kuivalatar" class="singer-card">
+                <div class="singer-grid">
+                    <div class="singer-img-wrap">
+                        <img src="картинки/Mateli-Kuivalatar-hautakivi-768x768 1.jpg" alt="Матели Куйвалатар" class="portrait-img">
+                    </div>
+                    <div class="singer-bio">
+                        <h4>Голос женской лирики</h4>
+                        <p class="meta">Деревня Иломантси, Северная Карелия</p>
+                        <p>
+                            Лённрот встретил эту слепую предсказательницу и певицу в 1838 году. Её песни были лирическими, 
+                            интимными, полными тоски и единения <br> с природой. Именно её песни легли в основу сборника 
+                            «Кантелетар» — младшей сестры «Калевалы».
+                        </p>
+                        <blockquote class="diary-snippet">
+                            «Матели не пела о битвах героев. Она пела о ветре, березах и девичьих слезах, и в этих песнях было больше магии, чем в ковке Сампо».
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+</main>
+<button id="backToTop" title="Наверх"></button>
+    <footer class="main-footer reveal">
+        <div class="footer-bottom-wave">
+            <div class="footer-content-wrap">
+                <div class="social-links">
+                    <a href="#" class="social-icon">Telegram</a>
+                    <a href="#" class="social-icon">ВКонтакте</a>
+                </div>
+                <div class="university-logo">
+                    <a href="https://vhutein.ru" target="_blank">
+                        <img src="картинки/vhutein.png" alt="ВХУТЕИН">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
