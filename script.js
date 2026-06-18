@@ -2,20 +2,24 @@
    1. НАСТРОЙКА ОБЪЕДИНЕННЫХ РУН (СТРУКТУРА НА ВСЕ 50 РУН)
    ========================================================================== */
 const volumesConfig = {
-    "volume-1":     { title: "РУНА 1",       part: "ЧАСТЬ I • СОТВОРЕНИЕ МИРА" },
-    "volume-2-3":   { title: "РУНЫ 2 – 3",   part: "ЧАСТЬ II • ВЫЗОВ ЙОУКАХАЙНЕНА" },
-    "volume-4-6":   { title: "РУНЫ 4 – 6",   part: "ЧАСТЬ III • СУДЬБА КРАСАВИЦЫ АЙНО" },
-    "volume-7":   { title: "РУНА 7",   part: "ЧАСТЬ IV • ПЛЕННИК СЕВЕРНОЙ ПОХЪЁЛЫ" },
-    "volume-8-10":  { title: "РУНЫ 8 – 10",  part: "ЧАСТЬ V • МАГИЧЕСКАЯ КУЗНИЦА" },
-    "volume-11-15": { title: "РУНЫ 11 – 15", part: "ЧАСТЬ VI • УДАЛОЙ ЛЕММИНКЯЙНЕН" },
-    "volume-16-20": { title: "РУНЫ 16 – 20", part: "ЧАСТЬ VII • ПОГОНЯ ЗА НЕВЕСТОЙ" },
-    "volume-21-25": { title: "РУНЫ 21 – 25", part: "ЧАСТЬ VIII • ВЕЛИКАЯ СВАДЬБА ВЕКА" },
-    "volume-26-30": { title: "РУНЫ 26 – 30", part: "ЧАСТЬ IX • МЕСТЬ ЛЕММИНКЯЙНЕНА" },
-    "volume-31-36": { title: "РУНЫ 31 – 36", part: "ЧАСТЬ X • ТРАГИЧЕСКИЙ РОК КУЛЛЕРВО" },
-    "volume-37-38": { title: "РУНЫ 37 – 38", part: "ЧАСТЬ XI • ЗОЛОТАЯ ДЕВА" },
-    "volume-39-44": { title: "РУНЫ 39 – 44", part: "ЧАСТЬ XII • ПОХИЩЕНИЕ САМПО" },
-    "volume-45-49": { title: "РУНЫ 45 – 49", part: "ЧАСТЬ XIII • БИТВА ЗА СВЕТ" },
-    "volume-50":    { title: "РУНА 50",       part: "ЧАСТЬ XIV • УХОД ПРОРОКА" }
+    
+    "volume-1":     { title: "РУНА 1",       part: "ЧАСТЬ I • СОТВОРЕНИЕ МИРА" }, // длинная, ничего не пишем
+    "volume-2-3":   { title: "РУНЫ 2 – 3",   part: "ЧАСТЬ II • ВЫЗОВ ЙОУКАХАЙНЕНА", isShort: true },
+    "volume-4-6":   { title: "РУНЫ 4 – 6",   part: "ЧАСТЬ III • СУДЬБА КРАСАВИЦЫ АЙНО", isShort: true },
+    "volume-7":     { title: "РУНА 7",       part: "ЧАСТЬ IV • ПЛЕННИК СЕВЕРНОЙ ПОХЪЁЛЫ" },
+    
+    // А вот пошли наши заглушки! Помечаем их как isShort: true
+    "volume-8-10":  { title: "РУНЫ 8 – 10",  part: "ЧАСТЬ V • МАГИЧЕСКАЯ КУЗНИЦА", isShort: true },
+    "volume-11-15": { title: "РУНЫ 11 – 15", part: "ЧАСТЬ VI • УДАЛОЙ ЛЕММИНКЯЙНЕН", isShort: true },
+    "volume-16-20": { title: "РУНЫ 16 – 20", part: "ЧАСТЬ VII • ПОГОНЯ ЗА НЕВЕСТОЙ", isShort: true },
+    "volume-21-25": { title: "РУНЫ 21 – 25", part: "ЧАСТЬ VIII • ВЕЛИКАЯ СВАДЬБА ВЕКА", isShort: true },
+    "volume-26-30": { title: "РУНЫ 26 – 30", part: "ЧАСТЬ IX • МЕСТЬ ЛЕММИНКЯЙНЕНА", isShort: true },
+    "volume-31-36": { title: "РУНЫ 31 – 36", part: "ЧАСТЬ X • ТРАГИЧЕСКИЙ РОК КУЛЛЕРВО", isShort: true },
+    "volume-37-38": { title: "РУНЫ 37 – 38", part: "ЧАСТЬ XI • ЗОЛОТАЯ ДЕВА", isShort: true },
+    "volume-39-44": { title: "РУНЫ 39 – 44", part: "ЧАСТЬ XII • ПОХИЩЕНИЕ САМПО", isShort: true },
+    "volume-45-49": { title: "РУНЫ 45 – 49", part: "ЧАСТЬ XIII • БИТВА ЗА СВЕТ", isShort: true },
+    "volume-50":    { title: "РУНА 50",       part: "ЧАСТЬ XIV • УХОД ПРОРОКА", isShort: true }
+
 };
 
 const volumeOrder = Object.keys(volumesConfig);
@@ -45,8 +49,27 @@ function selectRune(volumeId) {
         item.classList.remove('active');
         if (item.getAttribute('data-target') === volumeId) {
             item.classList.add('active');
+
+
+
+    // НАШЕ ОБНОВЛЕНИЕ: Ищем внешний контейнер страницы
+    const pageWrapper = document.querySelector('section.kalevala-page');
+    if (pageWrapper) {
+        // Если у текущей руны в конфиге стоит флаг isShort, добавляем класс короткого декора
+       if (volumesConfig[volumeId] && volumesConfig[volumeId].isShort) {
+    // Если руна короткая, вешаем класс на всю страницу body
+    document.body.classList.add('short-decor');
+} else {
+    // Если длинная — убираем
+    document.body.classList.remove('short-decor');
+}
+    }
+
+    // ... остальной твой код (скролл наверх, закрытие меню рун и т.д.) ...
+
         }
     });
+    
     
     // 4. Управляем стрелочками навигации
     const prevBtn = document.getElementById('prev-btn');

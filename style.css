@@ -1178,13 +1178,12 @@ display: block;
 
 
 /* для хахаха2 */
-
 .choblya5, .choblya6 {
     position: absolute;   /* Фиксируем их на экране */
     top: 250px;          /* Положение от верхнего края */
     z-index: -1;       /* Уводим под основной контент */
     pointer-events: none; /* Пропускают клики сквозь себя */
-    width: 250;      /* Настрой ширину под себя */
+    width: 250px;      /* ИСПРАВЛЕНО: Добавили px, чтобы браузер понял размер */
     height: auto;
 }
 
@@ -1196,7 +1195,15 @@ display: block;
     right: -70px;      /* Немного торчит справа */
 }
 
-
+/* МАГИЯ: Стили, когда скрипт добавляет класс короткой страницы (.short-decor) */
+.short-decor .choblya5 {
+    /* ИСПРАВЛЕНО: content меняет саму картинку в теге <img> */
+    content: url('картинки/сбоку штука короткая.png'); 
+}
+.short-decor .choblya6 {
+    /* ИСПРАВЛЕНО: content меняет саму картинку в теге <img> */
+    content: url('картинки/сбоку штука короткая.png'); 
+}
 /* Контейнер всей страницы */
 
 /* 3. ШАПКА И МЕНЮ */
@@ -1460,6 +1467,17 @@ display: block;
     max-width: 800px; /* Ограничиваем ширину текста, чтобы он не расползался */
     text-align: center;
 }
+
+.comic-center-blockk {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирует внутренние элементы по горизонтали */
+    justify-content: center;
+    margin: 60px auto;
+    max-width: 600px; /* Ограничиваем ширину текста, чтобы он не расползался */
+    text-align: center;
+}
+
 
 .central-text {
     font-size: 32px;
